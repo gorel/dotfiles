@@ -35,6 +35,7 @@ set wildmode=longest:full
 set wildmenu                  " menu has tab completion
 let maplocalleader=','        " all my macros start with ,
 set laststatus=2
+set mouse=a
 
 "  searching
 set incsearch                 " incremental search
