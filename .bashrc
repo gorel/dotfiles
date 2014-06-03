@@ -128,7 +128,7 @@ up(){
 # Custom aliases #
 ##################
 alias ..="cd .."
-alias ...="cd ..."
+alias ...="cd ../.."
 alias b="cd -"
 alias ll="ls -l"
 alias lo="ls -o"
@@ -147,3 +147,4 @@ alias fgrep='fgrep --color=auto'
 alias diff="colordiff"
 alias vi="vim"
 alias edit="vim"
+alias findr="find -regextype sed -regex"
