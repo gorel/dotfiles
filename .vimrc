@@ -67,3 +67,10 @@ endif
 nmap <LocalLeader>tl :set list!<cr>
 " toggle paste mode
 nmap <LocalLeader>pp :set paste!<cr>
+
+" syntax highlighting for rust
+au BufRead,BufNewFile *.rs set syntax=rust
+
+" Highlight trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
