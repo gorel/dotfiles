@@ -148,3 +148,8 @@ alias diff="colordiff"
 alias vi="vim"
 alias edit="vim"
 alias findr="find -regextype sed -regex"
+
+###########
+# Exports #
+###########
+export EDITOR=vim
