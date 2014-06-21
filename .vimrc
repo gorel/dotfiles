@@ -13,6 +13,7 @@ set nocompatible              " vim, not vi
 set autoindent smartindent    " auto/smart indent
 set smarttab                  " tab and backspace are smart
 set tabstop=4                 " 4 spaces
+set expandtab                 " insert spaces instead of tabs
 set shiftwidth=2
 set scrolloff=5               " keep at least 5 lines above/below
 set sidescrolloff=5           " keep at least 5 lines left/right
