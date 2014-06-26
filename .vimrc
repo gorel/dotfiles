@@ -40,7 +40,7 @@ set mouse=a
 
 "  searching
 set incsearch                 " incremental search
-set ignorecase                " search ignoring case
+set smartcase                 " ignore case unless user searches an [A-Z] char
 set hlsearch                  " highlight the search
 set showmatch                 " show matching bracket
 set diffopt=filler,iwhite     " ignore all whitespace and sync
