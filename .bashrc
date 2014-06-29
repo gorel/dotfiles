@@ -129,6 +129,7 @@ up(){
 ##################
 alias ..="cd .."
 alias ...="cd ../.."
+alias ....="cd ../../.."
 alias b="cd -"
 alias ll="ls -l"
 alias lo="ls -o"

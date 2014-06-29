@@ -38,6 +38,10 @@ let maplocalleader=','        " all my macros start with ,
 set laststatus=2
 set mouse=a
 
+" Show trailing whitespace
+highlight ExtraWhitespace ctermbg=red guibg=red
+match ExtraWhitespace /\s\+$/
+
 "  searching
 set incsearch                 " incremental search
 set smartcase                 " ignore case unless user searches an [A-Z] char
