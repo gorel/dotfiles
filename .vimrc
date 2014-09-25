@@ -58,7 +58,7 @@ set viminfo=%100,'100,/100,h,\"500,:100,n~/.viminfo
 " spelling
 if v:version >= 700
   " Enable spell check for text files
-  autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en
+  " autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en
 endif
 
 " Reopen files at the same line we exited from last time
@@ -79,3 +79,9 @@ au BufRead,BufNewFile *.rs set syntax=rust
 " Highlight trailing whitespace
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
+
+" Make line wrapping work as expected
+noremap <buffer> <silent> k gk
+noremap <buffer> <silent> j gj
+noremap <buffer> <silent> 0 g0
+noremap <buffer> <silent> $ g$
