@@ -1,3 +1,18 @@
+set nocompatible
+filetype off
+
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+" Bundles!
+Bundle 'vim-misc'
+Bundle 'taglist.vim'
+Bundle 'easytags.vim'
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'chriskempson/base16-vim'
+
+filetype plugin indent on
+
 syntax on
 set background=dark
 set ruler                     " show the line number on the bar
@@ -9,7 +24,6 @@ set noautowrite               " don't automagically write on :next
 set lazyredraw                " don't redraw when don't have to
 set showmode
 set showcmd
-set nocompatible              " vim, not vi
 set autoindent smartindent    " auto/smart indent
 set smarttab                  " tab and backspace are smart
 set tabstop=4                 " 4 spaces
@@ -53,7 +67,6 @@ set diffopt=filler,iwhite     " ignore all whitespace and sync
 set backup
 set backupdir=~/.vim_backup
 set viminfo=%100,'100,/100,h,\"500,:100,n~/.viminfo
-"set viminfo='100,f1
 
 " spelling
 if v:version >= 700
@@ -85,3 +98,6 @@ noremap <buffer> <silent> k gk
 noremap <buffer> <silent> j gj
 noremap <buffer> <silent> 0 g0
 noremap <buffer> <silent> $ g$
+
+" Pretty colors!
+colorscheme jellybeans
