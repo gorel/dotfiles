@@ -6,8 +6,12 @@ call vundle#rc()
 
 " Bundles!
 Bundle 'vim-misc'
+Bundle 'a.vim'
 Bundle 'taglist.vim'
 Bundle 'easytags.vim'
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tmhedberg/matchit'
+Bundle 'garbas/vim-snipmate'
 Bundle 'nanotech/jellybeans.vim'
 Bundle 'chriskempson/base16-vim'
 
