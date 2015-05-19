@@ -1,20 +1,22 @@
 set nocompatible
 filetype off
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
 " Bundles!
-Bundle 'vim-misc'
-Bundle 'a.vim'
-Bundle 'taglist.vim'
-Bundle 'easytags.vim'
-Bundle 'MarcWeber/vim-addon-mw-utils'
-Bundle 'tmhedberg/matchit'
-Bundle 'garbas/vim-snipmate'
-Bundle 'nanotech/jellybeans.vim'
-Bundle 'chriskempson/base16-vim'
+Plugin 'gmarik/Vundle.vim'
+Plugin 'vim-misc'
+Plugin 'a.vim'
+Plugin 'taglist.vim'
+Plugin 'easytags.vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'tmhedberg/matchit'
+Plugin 'garbas/vim-snipmate'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'chriskempson/base16-vim'
 
+call vundle#end()
 filetype plugin indent on
 
 syntax on
