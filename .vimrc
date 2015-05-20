@@ -100,6 +100,14 @@ au BufRead,BufNewFile *.rs set syntax=rust
 highlight ExtraWhitespace ctermbg=red guibg=red
 match ExtraWhitespace /\s\+$/
 
+" Highlight text past 80 characters
+highlight OverLength ctermbg=red ctermfg=white guibg=#592929
+match OverLength /\%81v.\+/
+
+" Highlight tab character in red
+syn match tab display "\t"
+hi link tab Error
+
 " Make line wrapping work as expected
 noremap <buffer> <silent> k gk
 noremap <buffer> <silent> j gj
