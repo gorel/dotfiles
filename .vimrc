@@ -15,6 +15,7 @@ Plugin 'tmhedberg/matchit'
 Plugin 'garbas/vim-snipmate'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'kevinw/pyflakes-vim'
 
 call vundle#end()
 filetype plugin indent on
