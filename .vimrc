@@ -12,13 +12,11 @@ Plugin 'taglist.vim'
 Plugin 'easytags.vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'tmhedberg/matchit'
-Plugin 'garbas/vim-snipmate'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'kevinw/pyflakes-vim'
 
 call vundle#end()
-filetype plugin indent on
 
 syntax on
 set background=dark
@@ -31,7 +29,7 @@ set noautowrite               " don't automagically write on :next
 set lazyredraw                " don't redraw when don't have to
 set showmode
 set showcmd
-set autoindent smartindent    " auto/smart indent
+set autoindent                " auto/smart indent
 set smarttab                  " tab and backspace are smart
 set tabstop=4                 " 4 spaces
 set expandtab                 " insert spaces instead of tabs
@@ -59,10 +57,6 @@ let maplocalleader=','        " all my macros start with ,
 set laststatus=2
 set mouse=a
 
-" Show trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-
 "  searching
 set incsearch                 " incremental search
 set smartcase                 " ignore case unless user searches an [A-Z] char
@@ -70,16 +64,20 @@ set hlsearch                  " highlight the search
 set showmatch                 " show matching bracket
 set diffopt=filler,iwhite     " ignore all whitespace and sync
 
+" Highlight trailing whitespace and lines too long
+" This must run before the colorscheme
+:highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+:match ExtraWhitespace /\s\+$/
+:autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+:autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+:autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+:autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+:autocmd BufWinLeave * call clearmatches()
+
 "  backup
 set backup
 set backupdir=~/.vim_backup
 set viminfo=%100,'100,/100,h,\"500,:100,n~/.viminfo
-
-" spelling
-if v:version >= 700
-  " Enable spell check for text files
-  " autocmd BufNewFile,BufRead *.txt setlocal spell spelllang=en
-endif
 
 " Reopen files at the same line we exited from last time
 if has("autocmd")
@@ -93,17 +91,6 @@ nmap <LocalLeader>tl :set list!<cr>
 " toggle paste mode
 nmap <LocalLeader>pp :set paste!<cr>
 
-" syntax highlighting for rust
-au BufRead,BufNewFile *.rs set syntax=rust
-
-" Highlight trailing whitespace
-highlight ExtraWhitespace ctermbg=red guibg=red
-match ExtraWhitespace /\s\+$/
-
-" Highlight text past 80 characters
-highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-match OverLength /\%81v.\+/
-
 " Highlight tab character in red
 syn match tab display "\t"
 hi link tab Error
@@ -111,8 +98,17 @@ hi link tab Error
 " Make line wrapping work as expected
 noremap <buffer> <silent> k gk
 noremap <buffer> <silent> j gj
-noremap <buffer> <silent> 0 g0
-noremap <buffer> <silent> $ g$
 
 " Pretty colors!
 colorscheme jellybeans
+
+function! InsertTabWrapper()
+    let col = col('.') - 1
+    if !col || getline('.')[col - 1] !~ '\k'
+        return "\<tab>"
+    else
+        return "\<c-p>"
+    endif
+endfunction
+inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+inoremap <s-tab> <c-n>
