@@ -66,13 +66,13 @@ set diffopt=filler,iwhite     " ignore all whitespace and sync
 
 " Highlight trailing whitespace and lines too long
 " This must run before the colorscheme
-:highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
-:match ExtraWhitespace /\s\+$/
-:autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
-:autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
-:autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
-:autocmd InsertLeave * match ExtraWhitespace /\s\+$/
-:autocmd BufWinLeave * call clearmatches()
+highlight ExtraWhitespace ctermbg=darkgreen guibg=darkgreen
+match ExtraWhitespace /\s\+$/
+autocmd ColorScheme * highlight ExtraWhitespace ctermbg=red guibg=red
+autocmd BufWinEnter * match ExtraWhitespace /\s\+$/
+autocmd InsertEnter * match ExtraWhitespace /\s\+\%#\@<!$/
+autocmd InsertLeave * match ExtraWhitespace /\s\+$/
+autocmd BufWinLeave * call clearmatches()
 
 "  backup
 set backup
@@ -112,3 +112,20 @@ function! InsertTabWrapper()
 endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
+
+" Statusline
+set statusline=%t       "tail of the filename
+set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
+set statusline+=%{&ff}] "file format
+set statusline+=%h      "help file flag
+set statusline+=%m      "modified flag
+set statusline+=%r      "read only flag
+set statusline+=%y      "filetype
+set statusline+=%=      "left/right separator
+set statusline+=%c,     "cursor column
+set statusline+=%l/%L   "cursor line/total lines
+set statusline+=\ %P    "percent through file
+
+" Highlight column 81 to prevent writing too far
+set colorcolumn=81
+highlight ColorColumn ctermbg=darkred guibg=darkred
