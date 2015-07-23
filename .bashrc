@@ -1,3 +1,4 @@
+source /home/engshare/admin/scripts/master.bashrc
 # ~/.bashrc: executed by bash(1) for non-login shells.
 # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
 # for examples
@@ -159,3 +160,18 @@ alias findr="find -regextype sed -regex"
 # Exports #
 ###########
 export EDITOR=vim
+
+##############
+# Hive stuff #
+##############
+export HIVE_OPTS='-hiveconf mapred.fairscheduler.pool=adsatlas.lowpri_adhoc'
+
+########
+# Tmux #
+########
+alias tmux="TERM=xterm-256color tmux"
+
+###############
+# Line editor #
+###############
+set -o vi
