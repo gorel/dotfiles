@@ -155,6 +155,7 @@ alias vi="vim"
 alias edit="vim"
 alias findr="find -regextype sed -regex"
 alias py="python"
+alias g="git"
 
 ###########
 # Exports #
