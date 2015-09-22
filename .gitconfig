@@ -1,0 +1,18 @@
+[user]
+	email = gorel@purdue.edu
+	name = Logan Gore
+
+[alias]
+    a = add
+    b = branch
+    ba = branch -a
+    ci = commit
+    co = checkout
+    d = diff
+    ds = diff --staged
+    gr = log --graph
+    p = pull
+    s = status
+
+[credential]
+	helper = cache --timeout=3600
