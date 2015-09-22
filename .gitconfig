@@ -10,6 +10,7 @@
     co = checkout
     d = diff
     ds = diff --staged
+    l = log
     gr = log --graph
     p = pull
     s = status
