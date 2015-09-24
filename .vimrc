@@ -5,16 +5,17 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 " Bundles!
-Plugin 'gmarik/Vundle.vim'
-Plugin 'vim-misc'
 Plugin 'a.vim'
-Plugin 'taglist.vim'
-Plugin 'easytags.vim'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'tmhedberg/matchit'
-Plugin 'nanotech/jellybeans.vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'easytags.vim'
+Plugin 'gmarik/Vundle.vim'
 Plugin 'kevinw/pyflakes-vim'
+Plugin 'MarcWeber/vim-addon-mw-utils'
+Plugin 'nanotech/jellybeans.vim'
+Plugin 'taglist.vim'
+Plugin 'tmhedberg/matchit'
+Plugin 'tmhedberg/SimpylFold'
+Plugin 'vim-misc'
 
 call vundle#end()
 
@@ -99,6 +100,10 @@ hi link tab Error
 noremap <buffer> <silent> k gk
 noremap <buffer> <silent> j gj
 
+" Map folding to the spacebar
+nnoremap <space> za
+vnoremap <space> zf
+
 " Pretty colors!
 colorscheme jellybeans
 
@@ -126,6 +131,11 @@ set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 
-" Highlight column 81 to prevent writing too far
-set colorcolumn=81
+" Highlight column 80 to prevent writing too far
+set colorcolumn=80
 highlight ColorColumn ctermbg=darkred guibg=darkred
+
+" Support folding in Python
+autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
+autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
+set foldlevel=99
