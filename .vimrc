@@ -130,6 +130,7 @@ set statusline+=%=      "left/right separator
 set statusline+=%c,     "cursor column
 set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
+highlight StatusLine ctermbg=black ctermfg=white
 
 " Highlight column 80 to prevent writing too far
 set colorcolumn=80
