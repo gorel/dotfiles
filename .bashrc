@@ -156,6 +156,7 @@ alias edit="vim"
 alias findr="find -regextype sed -regex"
 alias py="python"
 alias g="git"
+alias ta="tmux attach"
 
 ###########
 # Exports #
