@@ -157,6 +157,8 @@ alias findr="find -regextype sed -regex"
 alias py="python"
 alias g="git"
 alias ta="tmux attach"
+alias td="tmux detach"
+alias tl="tmux ls"
 
 ###########
 # Exports #
