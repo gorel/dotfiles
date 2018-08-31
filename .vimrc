@@ -7,15 +7,16 @@ call vundle#begin()
 " Bundles!
 Plugin 'a.vim'
 Plugin 'chriskempson/base16-vim'
-Plugin 'easytags.vim'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'kevinw/pyflakes-vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'nanotech/jellybeans.vim'
-Plugin 'taglist.vim'
+Plugin 'tomtom/tlib_vim'
+Plugin 'tpope/vim-sleuth'
 Plugin 'tmhedberg/matchit'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'vim-misc'
+Plugin 'Yggdroot/indentLine'
 
 call vundle#end()
 
@@ -24,6 +25,7 @@ set background=dark
 set ruler                     " show the line number on the bar
 set more                      " use more prompt
 set autoread                  " watch for file changes
+set relativenumber            " relative line numbers
 set number                    " line numbers
 set hidden
 set noautowrite               " don't automagically write on :next
@@ -32,8 +34,9 @@ set showmode
 set showcmd
 set autoindent                " auto/smart indent
 set smarttab                  " tab and backspace are smart
-set tabstop=4                 " 4 spaces
 set expandtab                 " insert spaces instead of tabs
+set tabstop=4                 " 4 spaces
+set softtabstop=4             " 4 spaces
 set shiftwidth=4              " 4 space tabs
 set scrolloff=5               " keep at least 5 lines above/below
 set sidescrolloff=5           " keep at least 5 lines left/right
@@ -49,7 +52,7 @@ set noerrorbells              " No error bells please
 set shell=bash
 set fileformats=unix
 set ff=unix
-filetype on                   " Enable filetype detection
+set filetype=on               " Enable filetype detection
 filetype indent on            " Enable filetype-specific indenting
 filetype plugin on            " Enable filetype-specific plugins
 set wildmode=longest:full
@@ -57,9 +60,11 @@ set wildmenu                  " menu has tab completion
 let maplocalleader=','        " all my macros start with ,
 set laststatus=2
 set mouse=a
+set t_Co=256
 
 "  searching
 set incsearch                 " incremental search
+set ignorecase                " ignore case (see smartcase below)
 set smartcase                 " ignore case unless user searches an [A-Z] char
 set hlsearch                  " highlight the search
 set showmatch                 " show matching bracket
@@ -77,6 +82,7 @@ autocmd BufWinLeave * call clearmatches()
 
 "  backup
 set backup
+silent !mkdir ~/.vim_backup > /dev/null 2>&1
 set backupdir=~/.vim_backup
 set viminfo=%100,'100,/100,h,\"500,:100,n~/.viminfo
 
@@ -118,8 +124,13 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
+inoremap jk <ESC>
+
+noremap <F2> <Esc>:syntax sync fromstart<CR>
+inoremap <F2> <C-o>:syntax sync fromstart<CR>
+
 " Statusline
-set statusline=%t       "tail of the filename
+set statusline=%f       "relative path to the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
 set statusline+=%{&ff}] "file format
 set statusline+=%h      "help file flag
@@ -132,11 +143,49 @@ set statusline+=%l/%L   "cursor line/total lines
 set statusline+=\ %P    "percent through file
 highlight StatusLine ctermbg=black ctermfg=white
 
-" Highlight column 80 to prevent writing too far
-set colorcolumn=80
+" Colorcolumn settings
+set colorcolumn=81
 highlight ColorColumn ctermbg=darkred guibg=darkred
+" Path-specific colorcolumn
+autocmd BufRead,BufNewFile *.java setlocal colorcolumn=121
+autocmd BufRead,BufNewFile /data/users/gorel/dataswarm-hg/* setlocal colorcolumn=101
 
 " Support folding in Python
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
 autocmd BufWinLeave *.py setlocal foldexpr< foldmethod<
 set foldlevel=99
+
+" Filetype-specific settings
+autocmd FileType css setlocal shiftwidth=2 softtabstop=2
+autocmd FileType html set textwidth=0
+autocmd FileType html setlocal shiftwidth=2 softtabstop=2
+autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
+autocmd BufRead,BufNewFile *.cconf setfiletype python
+autocmd BufRead,BufNewFile *.cinc setfiletype python
+
+" autocomplete
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#Complete
+autocmd FileType html set omnifunc=htmlcomplete#Complete
+autocmd FileType css set omnifunc=csscomplete#Complete
+autocmd FileType xml set omnifunc=xmlcomplete#Complete
+autocmd FileType php set omnifunc=phpcomplete#Complete
+autocmd FileType c set omnifunc=ccomplete#Complete
+
+" Source facebook-specific items
+source $HOME/.vim/fb.vim
+
+" Custom functions
+function Copy()
+	if (&number == 1)
+		set nonumber
+		set norelativenumber
+		set paste
+		set mouse=""
+	else
+		set number
+		set relativenumber
+		set nopaste
+		set mouse=a
+	endif
+endfunction

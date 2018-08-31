@@ -1,0 +1,22 @@
+[ui]
+username = Logan Gore <gorel@fb.com>
+# merge = vimdiff
+
+[alias]
+a = add
+b = bookmarks
+ci = commit
+co = checkout
+d = diff --pager always
+pd = diff -r .^ --pager always
+l = log --pager always
+gr = log --graph --pager always
+p = pull
+s = status
+
+[merge-tools]
+vimdiff.executable = vim
+vimdiff.args = -d $base $local $output $other +close +close
+
+[committemplate]
+reviewers=IdentityScience

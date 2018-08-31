@@ -17,8 +17,8 @@ shopt -s histappend
 shopt -s cmdhist
 
 # Ignore duplicates, ls without options and builtin commands
-HISTCONTROL=ignoredups
-export HISTIGNORE="&:ls:[bf]g:exit"
+export HISTCONTROL=ignoredups
+export HISTIGNORE="&:ls:[bf]g:exit:k"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -63,9 +63,9 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[00m\]@\h:\[\033[01;34m\]\W\[\033[00m\]\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;31m\]\u\[\033[00m\]:\[\033[01;34m\]\W\[\033[00m\]\$ '
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\W\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\u:\W\$ '
 fi
 unset color_prompt force_color_prompt
 
@@ -116,18 +116,51 @@ fi
 
 # Go up N directories, or just 1 by default
 up(){
-	  local d=""
-		limit=$1
-		for ((i=1 ; i <= limit ; i++))
-		do
-			d=$d/..
-		done
-		d=$(echo $d | sed 's/^\///')
-		if [ -z "$d" ]; then
-			d=..
-		fi
-		cd $d
+  local d=""
+  limit=$1
+  for ((i=1 ; i <= limit ; i++)); do
+    d=$d/..
+  done
+
+  d=$(echo $d | sed 's/^\///')
+  if [ -z "$d" ]; then
+    d=..
+  fi
+  cd $d
 }
+
+vc(){
+  if hg -q stat; then
+    hg "$@"
+  else
+    git "$@"
+  fi
+}
+
+fvim(){
+  find . -iname "$1" -exec vim {} + ;
+}
+
+ffvim(){
+  find . -iname "*$1*" -exec vim {} + ;
+}
+
+killport(){
+  lsof -ti:$1 | xargs kill -9
+}
+
+fin(){
+  find . -iname "*$1*"
+}
+
+killmosh(){
+  kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)
+}
+
+viewcsv(){
+  sed 's/,,/, ,/g;s/,,/, ,/g' "$1" | column -s, -t | less -#2 -N -S
+}
+
 
 ##################
 # Custom aliases #
@@ -147,35 +180,65 @@ alias hist="history"
 alias mkae="make"
 alias apt-get="sudo apt-get"
 alias c="clear"
+alias cc='echo -q "\n\n\n\n\n\033[0;31mCLEAR SCREEN\033[0m\n\n\n\n\n"'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias diff="colordiff"
 alias vi="vim"
 alias edit="vim"
-alias findr="find -regextype sed -regex"
-alias py="python"
+alias py="python3"
+alias py2="python2"
+alias py3="python3"
 alias g="git"
+alias h="hg"
+alias tt="tee /dev/tty"
+alias T="tee /dev/tty"
 alias ta="tmux attach"
 alias td="tmux detach"
 alias tl="tmux ls"
+alias adp="jf s -n"
+alias al="arc lint"
+alias af="arc feature"
+alias afc="arc feature --cleanup"
+alias clean="rm -f *.pyc"
+alias ham="hg amend"
+alias had="ham && jf s"
+alias rebase="hg shelve && arc pull && hg unshelve"
+alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
+alias hc="hg ci -m"
 
 ###########
 # Exports #
 ###########
 export EDITOR=vim
-
-##############
-# Hive stuff #
-##############
-export HIVE_OPTS='-hiveconf mapred.fairscheduler.pool=adsatlas.lowpri_adhoc'
+export VISUAL=vim
+export PYTHONDONTWRITEBYTECODE=True
 
 ########
 # Tmux #
 ########
-alias tmux="TERM=xterm-256color tmux"
+alias tmux="TERM=xterm-256color tmux -2"
 
 ###############
 # Line editor #
 ###############
 set -o vi
+stty stop undef
+
+########
+# PATH #
+########
+export GOPATH="$HOME/.golang"
+export PATH="$PATH:$GOPATH/bin"
+
+####################
+# Private ENV vars #
+####################
+source ~/.env_vars
+
+###############
+# Final setup #
+###############
+if [ ! -d $HOME/.vim_backup ]; then
+  mkdir $HOME/.vim_backup
+fi
