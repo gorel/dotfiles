@@ -1,0 +1,40 @@
+# Options
+set -g default-terminal "screen-256color"
+set -g history-limit 10000
+set -g base-index 1
+
+# Window options
+setw -g mouse on
+setw -g mode-keys vi
+
+# Make all splits default to the current path (instead of homedir)
+bind '"' split-window -c "#{pane_current_path}"
+bind % split-window -h -c "#{pane_current_path}"
+bind c new-window -c "#{pane_current_path}"
+
+
+# Other bindings
+bind m \
+    setw -g mouse on \;\
+    display 'Mouse: ON'
+
+bind M \
+    setw -g mouse off \;\
+    display 'Mouse: OFF'
+
+# Vim style pane selection
+bind h select-pane -L
+bind j select-pane -D
+bind k select-pane -U
+bind l select-pane -R
+
+# THEME
+set -g status-bg black
+set -g status-fg white
+set -g window-status-current-bg white
+set -g window-status-current-fg black
+set -g window-status-current-attr bold
+set -g status-interval 15
+set -g status-left-length 30
+set -g status-left '#[fg=green]#(whoami) '
+set -g status-right '#[fg=yellow]#(cut -d " " -f 1-3 /proc/loadavg)#[default] #[fg=white]%h%d,%I:%M%P#[default]'
