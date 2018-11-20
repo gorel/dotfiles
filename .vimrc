@@ -8,13 +8,14 @@ call vundle#begin()
 Plugin 'a.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'gmarik/Vundle.vim'
-Plugin 'kevinw/pyflakes-vim'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'nanotech/jellybeans.vim'
+Plugin 'scrooloose/nerdtree'
 Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tmhedberg/matchit'
 Plugin 'tmhedberg/SimpylFold'
+Plugin 'w0rp/ale'
 Plugin 'vim-misc'
 Plugin 'Yggdroot/indentLine'
 
@@ -129,6 +130,8 @@ inoremap jk <ESC>
 noremap <F2> <Esc>:syntax sync fromstart<CR>
 inoremap <F2> <C-o>:syntax sync fromstart<CR>
 
+map <C-o> :NERDTreeToggle<CR>
+
 " Statusline
 set statusline=%f       "relative path to the filename
 set statusline+=[%{strlen(&fenc)?&fenc:'none'}, "file encoding
@@ -149,6 +152,7 @@ highlight ColorColumn ctermbg=darkred guibg=darkred
 " Path-specific colorcolumn
 autocmd BufRead,BufNewFile *.java setlocal colorcolumn=121
 autocmd BufRead,BufNewFile /data/users/gorel/dataswarm-hg/* setlocal colorcolumn=101
+autocmd BufRead,BufNewFile /home/gorel/programming_beginners/* setlocal colorcolumn=121
 
 " Support folding in Python
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
@@ -171,9 +175,6 @@ autocmd FileType css set omnifunc=csscomplete#Complete
 autocmd FileType xml set omnifunc=xmlcomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
-
-" Source facebook-specific items
-source $HOME/.vim/fb.vim
 
 " Custom functions
 function Copy()
