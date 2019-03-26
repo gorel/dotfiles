@@ -8,6 +8,7 @@ call vundle#begin()
 Plugin 'a.vim'
 Plugin 'chriskempson/base16-vim'
 Plugin 'gmarik/Vundle.vim'
+Plugin 'jlanzarotta/bufexplorer'
 Plugin 'MarcWeber/vim-addon-mw-utils'
 Plugin 'nanotech/jellybeans.vim'
 Plugin 'scrooloose/nerdtree'
@@ -17,6 +18,7 @@ Plugin 'tmhedberg/matchit'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'w0rp/ale'
 Plugin 'vim-misc'
+Plugin 'w0rp/ale'
 Plugin 'Yggdroot/indentLine'
 
 call vundle#end()
@@ -114,6 +116,7 @@ vnoremap <space> zf
 " Pretty colors!
 colorscheme jellybeans
 
+" Simple tab completion
 function! InsertTabWrapper()
     let col = col('.') - 1
     if !col || getline('.')[col - 1] !~ '\k'
@@ -130,7 +133,7 @@ inoremap jk <ESC>
 noremap <F2> <Esc>:syntax sync fromstart<CR>
 inoremap <F2> <C-o>:syntax sync fromstart<CR>
 
-map <C-o> :NERDTreeToggle<CR>
+map <C-g> :NERDTreeToggle<CR>
 
 " Statusline
 set statusline=%f       "relative path to the filename
@@ -151,8 +154,7 @@ set colorcolumn=81
 highlight ColorColumn ctermbg=darkred guibg=darkred
 " Path-specific colorcolumn
 autocmd BufRead,BufNewFile *.java setlocal colorcolumn=121
-autocmd BufRead,BufNewFile /data/users/gorel/dataswarm-hg/* setlocal colorcolumn=101
-autocmd BufRead,BufNewFile /home/gorel/programming_beginners/* setlocal colorcolumn=121
+autocmd BufRead,BufNewFile /data/users/gorel/fbcode/dataswarm-pipelines/* setlocal colorcolumn=101
 
 " Support folding in Python
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
@@ -175,6 +177,14 @@ autocmd FileType css set omnifunc=csscomplete#Complete
 autocmd FileType xml set omnifunc=xmlcomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
+
+" Buffers - explore/next/previous
+nnoremap <silent> B :BufExplorer<CR>
+nnoremap <silent> bn :bn<CR>
+nnoremap <silent> bp :bp<CR>
+
+" Source facebook-specific items
+source $HOME/.vim/fb.vim
 
 " Custom functions
 function Copy()
