@@ -1,0 +1,8 @@
+set editing-mode vi
+set blink-matching-paren On
+set visible-stats On
+set input-meta On
+set output-meta On
+set convert-meta Off
+set show-mode-in-prompt On
+TAB: complete
