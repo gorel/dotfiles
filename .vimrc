@@ -16,7 +16,6 @@ Plugin 'tomtom/tlib_vim'
 Plugin 'tpope/vim-sleuth'
 Plugin 'tmhedberg/matchit'
 Plugin 'tmhedberg/SimpylFold'
-Plugin 'w0rp/ale'
 Plugin 'vim-misc'
 Plugin 'w0rp/ale'
 Plugin 'Yggdroot/indentLine'
@@ -182,9 +181,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 nnoremap <silent> B :BufExplorer<CR>
 nnoremap <silent> bn :bn<CR>
 nnoremap <silent> bp :bp<CR>
-
-" Source facebook-specific items
-source $HOME/.vim/fb.vim
 
 " Custom functions
 function Copy()

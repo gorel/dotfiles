@@ -1,6 +1,6 @@
 [ui]
 username = Logan Gore <gorel@fb.com>
-# merge = vimdiff
+merge = vimdiff
 
 [alias]
 a = add
@@ -17,6 +17,3 @@ s = status
 [merge-tools]
 vimdiff.executable = vim
 vimdiff.args = -d $base $local $output $other +close +close
-
-[committemplate]
-reviewers=IdentityScience

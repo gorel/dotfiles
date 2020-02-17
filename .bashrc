@@ -161,6 +161,12 @@ viewcsv(){
   sed 's/,,/, ,/g;s/,,/, ,/g' "$1" | column -s, -t | less -#2 -N -S
 }
 
+####################
+# Private ENV vars #
+####################
+if [ ! -f $HOME/.env_vars ]; then
+  source $HOME/.env_vars
+fi
 
 ##################
 # Custom aliases #
@@ -196,16 +202,24 @@ alias T="tee /dev/tty"
 alias ta="tmux attach"
 alias td="tmux detach"
 alias tl="tmux ls"
-alias adp="jf s -n"
-alias al="arc lint"
-alias af="arc feature"
-alias afc="arc feature --cleanup"
-alias clean="rm -f *.pyc"
-alias ham="hg amend"
-alias had="ham && jf s"
-alias rebase="hg shelve && arc pull && hg unshelve"
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 alias hc="hg ci -m"
+alias fb="mosh fb"
+if [ -z "$DEVSERVER" ]; then
+  alias adp="jf s -n"
+  alias al="arc lint"
+  alias af="arc feature"
+  alias afc="arc feature --cleanup"
+  alias ham="hg amend"
+  alias had="ham && jf s"
+  alias CF="cd ~/configerator"
+  alias DS="cd ~/dataswarm"
+  alias FBC="cd ~/fbcode"
+  alias WWW="cd ~/www"
+  alias LIFT="cd ~/dataswarm/tasks/ad_metrics/adstudy"
+  alias FBCONV="cd ~/fbcode/admarket/fbconv"
+  alias LDP="cd ~/fbcode/admarket/adstudy/data_provider"
+fi
 
 ###########
 # Exports #
@@ -213,6 +227,26 @@ alias hc="hg ci -m"
 export EDITOR=vim
 export VISUAL=vim
 export PYTHONDONTWRITEBYTECODE=True
+export LANG=en_US.UTF-8
+
+# Makefile autocomplete
+complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make
+
+if [ -d $HOME/repo ]; then
+  export mylocal="$HOME/repo"
+  # export OpenSSL paths
+  export PATH="${mylocal}/openssl/bin/:${PATH}"
+  export C_INCLUDE_PATH="${mylocal}/openssl/include/:${C_INCLUDE_PATH}"
+  export CPLUS_INCLUDE_PATH="${mylocal}/openssl/include/:${CPLUS_INCLUDE_PATH}"
+  export LIBRARY_PATH="${mylocal}/openssl/lib/:${LIBRARY_PATH}"
+  export LD_LIBRARY_PATH="${mylocal}/openssl/lib/:${LD_LIBRARY_PATH}"
+  # export MPIR paths
+  export PATH="${mylocal}/mpir/bin/:${PATH}"
+  export C_INCLUDE_PATH="${mylocal}/mpir/include/:${C_INCLUDE_PATH}"
+  export CPLUS_INCLUDE_PATH="${mylocal}/mpir/include/:${CPLUS_INCLUDE_PATH}"
+  export LIBRARY_PATH="${mylocal}/mpir/lib/:${LIBRARY_PATH}"
+  export LD_LIBRARY_PATH="${mylocal}/mpir/lib/:${LD_LIBRARY_PATH}"
+fi
 
 ########
 # Tmux #
@@ -225,16 +259,6 @@ alias tmux="TERM=xterm-256color tmux -2"
 set -o vi
 stty stop undef
 
-########
-# PATH #
-########
-export GOPATH="$HOME/.golang"
-export PATH="$PATH:$GOPATH/bin"
-
-####################
-# Private ENV vars #
-####################
-source ~/.env_vars
 
 ###############
 # Final setup #
