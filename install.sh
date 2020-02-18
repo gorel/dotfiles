@@ -14,6 +14,8 @@ fi
 cd "$(dirname "$0")"
 echo "Copy .bashrc"
 cp .bashrc $HOME/.bashrc
+echo "Copy .dircolors"
+cp .dircolors $HOME/.dircolors
 echo "Copy .gitconfig"
 cp .gitconfig $HOME/.gitconfig
 echo "Copy .hgrc"
