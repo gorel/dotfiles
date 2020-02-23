@@ -179,8 +179,6 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 
 " Buffers - explore/next/previous
 nnoremap <silent> B :BufExplorer<CR>
-nnoremap <silent> bn :bn<CR>
-nnoremap <silent> bp :bp<CR>
 
 " Custom functions
 function Copy()
