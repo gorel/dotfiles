@@ -7,6 +7,7 @@ call vundle#begin()
 " Bundles!
 Plugin 'a.vim'
 Plugin 'chriskempson/base16-vim'
+Plugin 'flazz/vim-colorschemes'
 Plugin 'gmarik/Vundle.vim'
 Plugin 'jlanzarotta/bufexplorer'
 Plugin 'MarcWeber/vim-addon-mw-utils'
