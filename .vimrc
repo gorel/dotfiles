@@ -112,6 +112,9 @@ noremap <buffer> <silent> j gj
 nnoremap <space> za
 vnoremap <space> zf
 
+" Map // to search under highlighted text in visual mode
+vnoremap // y/\V<C-R>=escape(@",'/\')<CR><CR>
+
 " Pretty colors!
 colorscheme jellybeans
 
