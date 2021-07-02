@@ -192,9 +192,6 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Buffers - explore/next/previous
 nnoremap <silent> B :BufExplorer<CR>
 
-" Source facebook-specific items
-source $HOME/.vim/fb.vim
-
 " Custom functions
 function Copy()
 	if (&number == 1)
