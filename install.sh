@@ -12,26 +12,36 @@ if [[ "$devserver_env" == "y" || "$devserver_env" == "Y" ]]; then
 fi
 
 cd "$(dirname "$0")"
-echo "Copy .bashrc"
-cp .bashrc $HOME/.bashrc
-echo "Copy .dircolors"
-cp .dircolors $HOME/.dircolors
-echo "Copy .gitconfig"
-cp .gitconfig $HOME/.gitconfig
-echo "Copy .hgrc"
-cp .hgrc $HOME/.hgrc
-echo "Copy .inputrc"
-cp .inputrc $HOME/.inputrc
-echo "Copy .vimrc"
-cp .vimrc $HOME/.vimrc
-echo "Copy .tmux.conf"
-cp .tmux.conf $HOME/.tmux.conf
+echo "Link .bashrc"
+ln -s .bashrc "$HOME/.bashrc"
+ln -s .bash_aliases "$HOME/.bash_aliases"
 
-echo "Installing vim plugins"
-mkdir -p "$HOME/.vim/bundle/"
-if [ ! -d "$HOME/.vim/bundle/Vundle.vim" ]; then
-    git clone https://github.com/VundleVim/Vundle.vim "$HOME/.vim/bundle/Vundle.vim"
-fi
-vim +PluginInstall +qall
+echo "Link .dircolors"
+ln -s .dircolors "$HOME/.dircolors"
+
+echo "Link .gitconfig"
+ln -s .gitconfig "$HOME/.gitconfig"
+
+echo "Link .hgrc"
+ln -s .hgrc "$HOME/.hgrc"
+
+echo "Link .inputrc"
+ln -s .inputrc "$HOME/.inputrc"
+
+echo "Link .vimrc and neovim init.vim"
+ln -s .vimrc "$HOME/.vimrc"
+mkdir -p "$HOME/.config/nvim/"
+ln -s init.vim "$HOME/.config/nvim/init.vim"
+
+echo "Link .tmux.conf"
+ln -s .tmux.conf "$HOME/.tmux.conf"
+
+echo "Installing neovim"
+mkdir "$HOME/bin"
+curl -fLO "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
+tar xzf nvim-linux64.tar.gz
+mv nvim-linux64/bin/nvim "$HOME/bin/nvim"
+rm nvim-linux64.tar.gz
+rm -rf nvim-linux64/
 
 echo "All done! You should run 'source ~/.bashrc' now to get the new changes."

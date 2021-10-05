@@ -1,29 +1,48 @@
 set nocompatible
-filetype off
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-" Bundles!
-Plugin 'a.vim'
-Plugin 'chriskempson/base16-vim'
-Plugin 'flazz/vim-colorschemes'
-Plugin 'gmarik/Vundle.vim'
-Plugin 'jlanzarotta/bufexplorer'
-Plugin 'MarcWeber/vim-addon-mw-utils'
-Plugin 'nanotech/jellybeans.vim'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tomtom/tlib_vim'
-Plugin 'tpope/vim-sleuth'
-Plugin 'tmhedberg/matchit'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'vim-misc'
-Plugin 'w0rp/ale'
-Plugin 'Yggdroot/indentLine'
+call plug#begin()
+" Easily switch between .h and .c/.cpp
+Plug 'vim-scripts/a.vim'
 
-call vundle#end()
+" NERDTree
+Plug 'scrooloose/nerdtree'
 
-syntax on
+" Git integration
+Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+
+" Linting
+Plug 'neomake/neomake'
+Plug 'w0rp/ale'
+
+" Snippets
+Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
+
+" Syntax
+Plug 'sheerun/vim-polyglot'
+Plug 'matthewbdaly/vim-filetype-settings'
+
+" Heuristic-based shiftwidth and expandtab
+Plug 'tpope/vim-sleuth'
+
+" Better matching for HTML tags
+Plug 'tmhedberg/matchit'
+
+" Show where indents are with a small vertical line
+Plug 'Yggdroot/indentLine'
+
+" Theme
+Plug 'nanotech/jellybeans.vim' , {'as': 'jellybeans'}
+
+call plug#end()
+
 set background=dark
 set ruler                     " show the line number on the bar
 set more                      " use more prompt
