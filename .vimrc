@@ -150,8 +150,6 @@ endfunction
 inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 inoremap <s-tab> <c-n>
 
-inoremap jk <ESC>
-
 noremap <F2> <Esc>:syntax sync fromstart<CR>
 inoremap <F2> <C-o>:syntax sync fromstart<CR>
 
@@ -176,7 +174,7 @@ set colorcolumn=81
 highlight ColorColumn ctermbg=darkred guibg=darkred
 " Path-specific colorcolumn
 autocmd BufRead,BufNewFile *.java setlocal colorcolumn=121
-autocmd BufRead,BufNewFile /data/users/gorel/fbcode/dataswarm-pipelines/* setlocal colorcolumn=101
+autocmd BufRead,BufNewFile /data/users/gorel/fbsource/fbcode/dataswarm-pipelines/* setlocal colorcolumn=101
 
 " Support folding in Python
 autocmd BufWinEnter *.py setlocal foldexpr=SimpylFold(v:lnum) foldmethod=expr
@@ -188,8 +186,11 @@ autocmd FileType css setlocal shiftwidth=2 softtabstop=2
 autocmd FileType html set textwidth=0
 autocmd FileType html setlocal shiftwidth=2 softtabstop=2
 autocmd FileType javascript setlocal shiftwidth=2 softtabstop=2
+autocmd FileType cpp setlocal shiftwidth=2 softtabstop=2
 autocmd BufRead,BufNewFile *.cconf setfiletype python
+autocmd BufRead,BufNewFile *.mcconf setfiletype python
 autocmd BufRead,BufNewFile *.cinc setfiletype python
+autocmd BufRead,BufNewFile *.tw setfiletype python
 
 " autocomplete
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -199,6 +200,11 @@ autocmd FileType css set omnifunc=csscomplete#Complete
 autocmd FileType xml set omnifunc=xmlcomplete#Complete
 autocmd FileType php set omnifunc=phpcomplete#Complete
 autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType cpp set omnifunc=ccomplete#Complete
+
+
+" Turn off automatic comment on newline
+autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 
 " Buffers - explore/next/previous
 nnoremap <silent> B :BufExplorer<CR>
