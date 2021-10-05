@@ -12,29 +12,30 @@ if [[ "$devserver_env" == "y" || "$devserver_env" == "Y" ]]; then
 fi
 
 cd "$(dirname "$0")"
+echo "My directory is $(pwd)"
 echo "Link .bashrc"
-ln -s .bashrc "$HOME/.bashrc"
-ln -s .bash_aliases "$HOME/.bash_aliases"
+ln -s "$PWD/.bashrc" "$HOME/.bashrc"
+ln -s "$PWD/.bash_aliases" "$HOME/.bash_aliases"
 
 echo "Link .dircolors"
-ln -s .dircolors "$HOME/.dircolors"
+ln -s "$PWD/.dircolors" "$HOME/.dircolors"
 
 echo "Link .gitconfig"
-ln -s .gitconfig "$HOME/.gitconfig"
+ln -s "$PWD/.gitconfig" "$HOME/.gitconfig"
 
 echo "Link .hgrc"
-ln -s .hgrc "$HOME/.hgrc"
+ln -s "$PWD/.hgrc" "$HOME/.hgrc"
 
 echo "Link .inputrc"
-ln -s .inputrc "$HOME/.inputrc"
+ln -s "$PWD/.inputrc" "$HOME/.inputrc"
 
 echo "Link .vimrc and neovim init.vim"
-ln -s .vimrc "$HOME/.vimrc"
+ln -s "$PWD/.vimrc" "$HOME/.vimrc"
 mkdir -p "$HOME/.config/nvim/"
-ln -s init.vim "$HOME/.config/nvim/init.vim"
+ln -s "$PWD/init.vim" "$HOME/.config/nvim/init.vim"
 
 echo "Link .tmux.conf"
-ln -s .tmux.conf "$HOME/.tmux.conf"
+ln -s "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 
 echo "Installing neovim"
 mkdir "$HOME/bin"
