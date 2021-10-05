@@ -21,10 +21,6 @@ Plug 'airblade/vim-gitgutter'
 Plug 'neomake/neomake'
 Plug 'w0rp/ale'
 
-" Snippets
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-
 " Syntax
 Plug 'sheerun/vim-polyglot'
 Plug 'matthewbdaly/vim-filetype-settings'
@@ -106,7 +102,14 @@ autocmd BufWinLeave * call clearmatches()
 set backup
 silent !mkdir ~/.vim_backup > /dev/null 2>&1
 set backupdir=~/.vim_backup
-set viminfo=%100,'100,/100,h,\"500,:100,n~/.viminfo
+if !has('nvim')
+  set viminfo=%100,'100,/100,h,\"500,:100,n~/.viminfo
+else
+  " Do nothing here to use the neovim default
+  " or do soemething like:
+  " set viminfo+=n~/.shada
+  set viminfo=%100,'100,/100,h,\"500,:100,n~/.shada
+endif
 
 " Reopen files at the same line we exited from last time
 if has("autocmd")
