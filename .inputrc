@@ -5,4 +5,5 @@ set input-meta On
 set output-meta On
 set convert-meta Off
 set show-mode-in-prompt On
+set mark-symlinked-directories on
 TAB: complete
