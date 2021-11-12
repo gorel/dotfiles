@@ -18,7 +18,7 @@ shopt -s cmdhist
 
 # Ignore duplicates, ls without options and builtin commands
 export HISTCONTROL=ignoredups
-export HISTIGNORE="&:ls:[bf]g:exit:k"
+export HISTIGNORE="&:ls:[bf]g:exit:k:q"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -167,6 +167,7 @@ viewcsv(){
 touch "$HOME/.env_vars"
 source "$HOME/.env_vars"
 
+
 ###########
 # Exports #
 ###########
@@ -193,6 +194,17 @@ stty stop undef
 # PATH exports #
 ################
 export PATH="$HOME/bin:$PATH"
+
+############
+# FB Stuff #
+############
+function pwt() {
+  eval "$* 2>&1" | pastry --title "$*";
+}
+
+function pwto() {
+  eval "$* 2>&1" | tee >(pastry --title "$*");
+}
 
 ###############
 # Final setup #
