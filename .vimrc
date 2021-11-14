@@ -213,6 +213,10 @@ autocmd FileType * setlocal formatoptions-=c formatoptions-=r formatoptions-=o
 " Buffers - explore/next/previous
 nnoremap <silent> B :BufExplorer<CR>
 
+" Map clang-format to C
+nnoremap <silent> C :ClangFormat<CR>
+vnoremap <silent> C :ClangFormat<CR>
+
 " Custom functions
 function Copy()
 	if (&number == 1)
