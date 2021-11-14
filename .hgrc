@@ -1,6 +1,8 @@
 [ui]
 username = Logan Gore <gorel@fb.com>
 merge = vimdiff
+ignore.myignore = /home/<unixname>/.gitignore
+ignore = /home/<unixname>/.gitignore
 
 [alias]
 a = add
@@ -17,3 +19,6 @@ s = status
 [merge-tools]
 vimdiff.executable = vim
 vimdiff.args = -d $base $local $output $other +close +close
+
+[hint]
+ack = undo

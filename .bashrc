@@ -18,7 +18,7 @@ shopt -s cmdhist
 
 # Ignore duplicates, ls without options and builtin commands
 export HISTCONTROL=ignoredups
-export HISTIGNORE="&:ls:[bf]g:exit:k"
+export HISTIGNORE="&:ls:[bf]g:exit:k:q"
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -158,6 +158,7 @@ viewcsv(){
 touch "$HOME/.env_vars"
 source "$HOME/.env_vars"
 
+<<<<<<< HEAD
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -166,6 +167,8 @@ source "$HOME/.env_vars"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
+=======
+>>>>>>> 9789e34096edadb29273afcccdd5c735e8692b5b
 
 ###########
 # Exports #
@@ -193,6 +196,17 @@ stty stop undef
 # PATH exports #
 ################
 export PATH="$HOME/bin:$PATH"
+
+############
+# FB Stuff #
+############
+function pwt() {
+  eval "$* 2>&1" | pastry --title "$*";
+}
+
+function pwto() {
+  eval "$* 2>&1" | tee >(pastry --title "$*");
+}
 
 ###############
 # Final setup #

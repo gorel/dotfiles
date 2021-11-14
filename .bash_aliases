@@ -33,6 +33,7 @@ alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 alias hc="hg ci -m"
 alias fb="mosh fb"
 alias ght="echo $GITHUB_TOKEN"
+
 if [ -z "$DEVSERVER" ]; then
   alias adp="jf s -n"
   alias al="arc lint"
@@ -40,11 +41,15 @@ if [ -z "$DEVSERVER" ]; then
   alias afc="arc feature --cleanup"
   alias ham="hg amend"
   alias had="ham && jf s"
+  alias hads="ham && jf s --draft"
+  alias hdr="hg diff -r .^"
+
+  # cd shortcuts
   alias CF="cd ~/configerator"
-  alias DS="cd ~/dataswarm"
   alias FBC="cd ~/fbcode"
-  alias WWW="cd ~/www"
-  alias LIFT="cd ~/dataswarm/tasks/ad_metrics/adstudy"
-  alias FBCONV="cd ~/fbcode/admarket/fbconv"
-  alias LDP="cd ~/fbcode/admarket/adstudy/data_provider"
+  alias LIFT="cd ~/dataswarm/tasks/adsatlas/adstudy"
+  alias PL="cd ~/fbcode/measurement/private_lift/"
+  alias PCS="cd ~/fbcode/fbpcs/"
+  alias PCF="cd ~/fbcode/fbpcf/"
+  alias PCP="cd ~/fbcode/fbpcp/"
 fi

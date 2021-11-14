@@ -31,18 +31,9 @@ ln -s "$PWD/.inputrc" "$HOME/.inputrc"
 
 echo "Link .vimrc and neovim init.vim"
 ln -s "$PWD/.vimrc" "$HOME/.vimrc"
-mkdir -p "$HOME/.config/nvim/"
-ln -s "$PWD/.vimrc" "$HOME/.config/nvim/init.vim"
 
 echo "Link .tmux.conf"
 ln -s "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 
-echo "Installing neovim"
-mkdir -p "$HOME/bin"
-rm -rf nvim-linux64/
-curl -fLO "https://github.com/neovim/neovim/releases/download/stable/nvim-linux64.tar.gz"
-tar xzf nvim-linux64.tar.gz
-rm nvim-linux64.tar.gz
-ln -s "$PWD/nvim-linux64/bin/nvim" "$HOME/bin/nvim"
 
 echo "All done! You should run 'source ~/.bashrc' now to get the new changes."
