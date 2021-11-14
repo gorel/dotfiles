@@ -32,6 +32,7 @@ alias tl="tmux ls"
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 alias hc="hg ci -m"
 alias fb="mosh fb"
+alias ght="echo $GITHUB_TOKEN"
 if [ -z "$DEVSERVER" ]; then
   alias adp="jf s -n"
   alias al="arc lint"
