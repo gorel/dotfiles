@@ -158,7 +158,6 @@ viewcsv(){
 touch "$HOME/.env_vars"
 source "$HOME/.env_vars"
 
-<<<<<<< HEAD
 # Alias definitions.
 # You may want to put all your additions into a separate file like
 # ~/.bash_aliases, instead of adding them here directly.
@@ -167,8 +166,6 @@ source "$HOME/.env_vars"
 if [ -f ~/.bash_aliases ]; then
     . ~/.bash_aliases
 fi
-=======
->>>>>>> 9789e34096edadb29273afcccdd5c735e8692b5b
 
 ###########
 # Exports #
