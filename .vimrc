@@ -25,6 +25,7 @@ Plug 'w0rp/ale'
 Plug 'sheerun/vim-polyglot'
 Plug 'matthewbdaly/vim-filetype-settings'
 Plug 'rhysd/vim-clang-format'
+Plug 'psf/black'
 
 " Heuristic-based shiftwidth and expandtab
 Plug 'tpope/vim-sleuth'

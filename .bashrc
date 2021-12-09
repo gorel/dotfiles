@@ -209,3 +209,4 @@ function pwto() {
 # Final setup #
 ###############
 mkdir -p "$HOME/.vim_backup"
+source "$HOME/.cargo/env"
