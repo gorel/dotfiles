@@ -668,6 +668,11 @@ function M.setup()
       end,
     }
 
+    -- Autoformatting
+    use {
+      "sbdchd/neoformat"
+    }
+
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
     use { "nathom/filetype.nvim" }

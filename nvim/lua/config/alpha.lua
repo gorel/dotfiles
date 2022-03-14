@@ -34,6 +34,7 @@ function M.setup()
     dashboard.button("o", "📁 Open file", "<Cmd>Telescope find_files<CR>"),
     dashboard.button("g", "🔍 Grep file", "<Cmd>Telescope live_grep<CR>"),
     dashboard.button("r", "♻  Recent files", "<Cmd>Telescope oldfiles<CR>"),
+    dashboard.button("p", "🔧 Edit plugins", ":e $HOME/.config/nvim/lua/plugins.lua<CR>"),
     dashboard.button("q", "  Quit Neovim", ":qa<CR>"),
   }
 

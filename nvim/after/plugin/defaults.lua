@@ -10,7 +10,7 @@ g.maplocalleader = " "
 
 opt.termguicolors = true -- Enable colors in terminal
 opt.fileformat = "unix" -- always use unix line endings
-opt.hlsearch = true --Set highlight on search 
+opt.hlsearch = true --Set highlight on search
 opt.number = true --Make line numbers default
 opt.relativenumber = true --Make relative number default
 opt.mouse = "a" --Enable mouse mode
@@ -88,8 +88,16 @@ vim.cmd [[autocmd FileType * setlocal formatoptions-=cro]]
 
 -- Copilot
 vim.cmd [[
-    imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
-    let g:copilot_no_tab_map = v:true
+  imap <silent><script><expr> <C-s> copilot#Accept("\<CR>")
+  let g:copilot_no_tab_map = v:true
+]]
+
+-- Autoformat on save
+vim.cmd [[
+  augroup fmt
+    autocmd!
+    autocmd BufWritePre * undojoin | Neoformat
+  augroup END
 ]]
 
   -- set up my colorscheme
