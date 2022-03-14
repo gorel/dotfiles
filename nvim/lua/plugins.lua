@@ -445,6 +445,15 @@ function M.setup()
       disable = false,
     }
 
+    -- Better increment/decrement
+    use {
+      "monaqa/dial.nvim",
+      event = "BufRead",
+      config = function()
+         require "custom.plugins.dial"
+      end,
+   }
+
     -- LSP
     if PLUGINS.nvim_cmp.enabled then
       use {
