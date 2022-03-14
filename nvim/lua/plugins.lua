@@ -88,6 +88,13 @@ function M.setup()
       end,
       disable = false,
     }
+    use {
+      "sickill/vim-monokai",
+      config = function()
+        vim.cmd "colorscheme monokai"
+      end,
+      disable = false,
+    }
 
     -- Startup screen
     use {
