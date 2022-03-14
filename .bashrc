@@ -129,11 +129,11 @@ vc(){
 }
 
 fvim(){
-  find . -iname "$1" -exec vim {} + ;
+  find . -iname "$1" -exec nvim {} + ;
 }
 
 ffvim(){
-  find . -iname "*$1*" -exec vim {} + ;
+  find . -iname "*$1*" -exec nvim {} + ;
 }
 
 killport(){
@@ -170,8 +170,8 @@ fi
 ###########
 # Exports #
 ###########
-export EDITOR=vim
-export VISUAL=vim
+export EDITOR=nvim
+export VISUAL=nvim
 export PYTHONDONTWRITEBYTECODE=True
 export LANG=en_US.UTF-8
 

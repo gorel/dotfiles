@@ -17,8 +17,9 @@ alias cc='echo -q "\n\n\n\n\n\033[0;31mCLEAR SCREEN\033[0m\n\n\n\n\n"'
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
-alias vi="vim"
-alias edit="vim"
+alias vim="nvim"
+alias vi="nvim"
+alias edit="nvim"
 alias py="python3"
 alias py2="python2"
 alias py3="python3"
@@ -38,6 +39,7 @@ if [ -n "$DEVSERVER" ]; then
   alias adp="jf s -n"
   alias al="arc lint"
   alias af="arc feature"
+  alias apl="arc pull --latest"
   alias afc="arc feature --cleanup"
   alias ham="hg amend"
   alias had="ham && jf s"
@@ -51,5 +53,4 @@ if [ -n "$DEVSERVER" ]; then
   alias PL="cd ~/fbcode/measurement/private_lift/"
   alias PCS="cd ~/fbcode/fbpcs/"
   alias PCF="cd ~/fbcode/fbpcf/"
-  alias PCP="cd ~/fbcode/fbpcp/"
 fi
