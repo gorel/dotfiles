@@ -56,45 +56,22 @@ function M.setup()
       end,
     }
 
-    -- Colorscheme
-    use {
-      "folke/tokyonight.nvim",
-      config = function()
-        vim.cmd "colorscheme tokyonight"
-      end,
-      disable = false,
-    }
-    use {
-      "sainnhe/everforest",
-      config = function()
-        vim.cmd "colorscheme everforest"
-      end,
-      disable = false,
-    }
-    use {
-      "sainnhe/gruvbox-material",
-      config = function()
-        vim.cmd "colorscheme gruvbox-material"
-      end,
-      disable = false,
-    }
-    use {
-      "sainnhe/sonokai",
-      config = function()
-        vim.cmd ([[
-        let g:sonokai_style = 'shusia'
-        colorscheme sonokai
-        ]])
-      end,
-      disable = false,
-    }
-    use {
-      "sickill/vim-monokai",
-      config = function()
-        vim.cmd "colorscheme monokai"
-      end,
-      disable = false,
-    }
+    -- Colorschemes
+    use "ackyshake/spacegray.vim"
+    use "atelierbram/Base2Tone-vim"
+    use "chriskempson/base16-vim"
+    use "embark-theme/vim"
+    use "folke/tokyonight.nvim"
+    use "joshdick/onedark.vim"
+    use "marko-cerovac/material.nvim"
+    use "nanotech/jellybeans.vim"
+    use "preservim/vim-colors-pencil"
+    use "sainnhe/everforest"
+    use "sainnhe/gruvbox-material"
+    use "sainnhe/sonokai"
+    use "sickill/vim-monokai"
+    use "tomasr/molokai"
+    use "w0ng/vim-hybrid"
 
     -- Startup screen
     use {

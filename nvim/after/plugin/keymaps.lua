@@ -10,10 +10,6 @@ keymap("t", "<C-j>", "<C-\\><C-n><C-w>j", default_opts)
 keymap("t", "<C-k>", "<C-\\><C-n><C-w>k", default_opts)
 keymap("t", "<C-l>", "<C-\\><C-n><C-w>l", default_opts)
 
--- Center search results
-keymap("n", "n", "nzz", default_opts)
-keymap("n", "N", "Nzz", default_opts)
-
 -- Visual line wraps
 keymap("n", "k", "v:count == 0 ? 'gk' : 'k'", expr_opts)
 keymap("n", "j", "v:count == 0 ? 'gj' : 'j'", expr_opts)
