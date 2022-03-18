@@ -696,6 +696,19 @@ function M.setup()
       end,
     }
 
+    --  Copy vim statusline into tmux statusline
+    use {
+      "vimpostor/vim-tpipeline",
+      config = function()
+        vim.cmd [[
+          if system('pgrep tmux')
+          " prevent statusline duplication when tmux is running
+          autocmd BufRead,BufNewFile,BufEnter,BufWinEnter * set laststatus=0
+          endif
+        ]]
+      end,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"

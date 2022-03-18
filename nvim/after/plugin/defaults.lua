@@ -97,17 +97,21 @@ vim.cmd [[colorscheme base16-circus]]
 
 -- Close vim if the last buffer is deleted
 vim.cmd [[
-function! CloseOnLast()
-    let cnt = 0
-    for i in range(0, bufnr("$"))
-        if buflisted(i)
-            cnt += 1
-        endif
-    endfor
-    if cnt <= 1
-        qa!
-    endif
+function! CountListedBuffers()
+     let cnt = 0
+     for nr in range(1,bufnr("$"))
+if buflisted(nr) && ! empty(bufname(nr)) || getbufvar(nr, '&buftype') ==# 'help'
+             let cnt += 1
+         endif
+     endfor
+     return cnt
 endfunction
 
-autocmd BufDelete * call CloseOnLast()
+function! QuitIfLastBuffer()
+     if CountListedBuffers() == 1
+         :q
+     endif
+ endfunction
+
+autocmd BufDelete * :call QuitIfLastBuffer()
 ]]
