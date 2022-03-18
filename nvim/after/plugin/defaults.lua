@@ -92,13 +92,22 @@ vim.cmd [[
   let g:copilot_no_tab_map = v:true
 ]]
 
--- Autoformat on save
-vim.cmd [[
-  augroup fmt
-    autocmd!
-    autocmd BufWritePre * undojoin | Neoformat
-  augroup END
-]]
-
-  -- set up my colorscheme
+-- set up my colorscheme
 vim.cmd [[colorscheme base16-circus]]
+
+-- Close vim if the last buffer is deleted
+vim.cmd [[
+function! CloseOnLast()
+    let cnt = 0
+    for i in range(0, bufnr("$"))
+        if buflisted(i)
+            cnt += 1
+        endif
+    endfor
+    if cnt <= 1
+        qa!
+    endif
+endfunction
+
+autocmd BufDelete * call CloseOnLast()
+]]

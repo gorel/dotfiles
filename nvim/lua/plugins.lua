@@ -450,7 +450,7 @@ function M.setup()
       "monaqa/dial.nvim",
       event = "BufRead",
       config = function()
-         require "custom.plugins.dial"
+         require "config.dial"
       end,
    }
 
@@ -675,11 +675,6 @@ function M.setup()
       config = function()
         require("config.refactoring").setup()
       end,
-    }
-
-    -- Autoformatting
-    use {
-      "sbdchd/neoformat"
     }
 
     -- Performance

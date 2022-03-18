@@ -69,7 +69,8 @@ local function normal_keymap()
 
   local keymap = {
     ["w"] = { "<cmd>update!<CR>", "Save" },
-    ["q"] = { "<cmd>bd<CR>", "Quit" },
+    ["q"] = { "<cmd>bd<CR>", "Close buffer" },
+    ["Q"] = { "<cmd>qall<CR>", "Quit" },
     ["tt"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
     b = {

@@ -37,3 +37,10 @@ keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 -- Insert blank line
 keymap("n", "]<Space>", "o<Esc>", default_opts)
 keymap("n", "[<Space>", "O<Esc>", default_opts)
+
+keymap("n", "<C-a>", require("dial.map").inc_normal(), default_opts)
+keymap("n", "<C-x>", require("dial.map").dec_normal(), default_opts)
+keymap("v", "<C-a>", require("dial.map").inc_visual(), default_opts)
+keymap("v", "<C-x>", require("dial.map").dec_visual(), default_opts)
+keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), default_opts)
+keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), default_opts)
