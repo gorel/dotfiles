@@ -34,6 +34,9 @@ alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 alias hc="hg ci -m"
 alias fb="mosh fb"
 alias ght="echo $GITHUB_TOKEN"
+if command -v batcat &> /dev/null; then
+  alias bat="batcat"
+fi
 
 if [ -n "$DEVSERVER" ]; then
   alias adp="jf s -n"
