@@ -115,3 +115,9 @@ function! QuitIfLastBuffer()
 
 autocmd BufDelete * :call QuitIfLastBuffer()
 ]]
+
+-- highlight trailing spaces as an error
+vim.cmd[[
+hi EoLSpace ctermbg=238 guibg=#ff3333
+match EoLSpace /\s\+$/
+]]
