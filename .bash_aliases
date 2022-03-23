@@ -49,6 +49,9 @@ if [ -n "$DEVSERVER" ]; then
   alias hads="ham && jf s --draft"
   alias hdr="hg diff -r .^"
 
+  # proxy commands
+  alias proxy_nvim='env $(fwdproxy-config --format=sh curl) nvim'
+
   # cd shortcuts
   alias CF="cd ~/configerator"
   alias FBC="cd ~/fbcode"
