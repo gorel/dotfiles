@@ -450,9 +450,9 @@ function M.setup()
       "monaqa/dial.nvim",
       event = "BufRead",
       config = function()
-         require "config.dial"
+        require "config.dial"
       end,
-   }
+    }
 
     -- LSP
     if PLUGINS.nvim_cmp.enabled then
@@ -589,9 +589,8 @@ function M.setup()
       -- event = "BufReadPre",
       keys = { [[<leader>d]] },
       module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
       requires = {
-        "Pocco81/DAPInstall.nvim",
         "theHamsta/nvim-dap-virtual-text",
         "rcarriga/nvim-dap-ui",
         "mfussenegger/nvim-dap-python",
