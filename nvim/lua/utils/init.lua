@@ -12,6 +12,14 @@ end
 
 local M = {}
 
+M.ui = {
+  hl_override = "",
+  colors = "",
+  italic_comments = true,
+  theme = "tokyonight",
+  transparency = false,
+}
+
 function M.t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end

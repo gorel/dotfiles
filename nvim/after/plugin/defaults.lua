@@ -93,7 +93,14 @@ vim.cmd [[
 ]]
 
 -- set up my colorscheme
-vim.cmd [[silent! colorscheme jellybeans]]
+vim.g.tokyonight_style = "storm"
+vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+-- Change the "hint" color to the "orange" color, and make the "error" color bright red
+vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+vim.cmd [[
+
+  silent! colorscheme tokyonight
+]]
 
 -- Close vim if the last buffer is deleted
 vim.cmd [[

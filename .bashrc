@@ -36,16 +36,6 @@ if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
     debian_chroot=$(cat /etc/debian_chroot)
 fi
 
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
-# allow a 256 color terminal
-if [ "$COLORTERM" == "gnome-terminal" ]; then
-    export TERM=xterm-256color
-fi
-
 # uncomment for a colored prompt, if the terminal has the capability; turned
 # off by default to not distract the user: the focus in a terminal window
 # should be on the output of commands, not on the prompt
@@ -68,15 +58,6 @@ else
     PS1='${debian_chroot:+($debian_chroot)}\u:\W\$ '
 fi
 unset color_prompt force_color_prompt
-
-# If this is an xterm set the title to user@host:dir
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;${debian_chroot:+($debian_chroot)}\u@\h: \w\a\]$PS1"
-    ;;
-*)
-    ;;
-esac
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -126,14 +107,6 @@ vc(){
   else
     git "$@"
   fi
-}
-
-fvim(){
-  find . -iname "$1" -exec nvim {} + ;
-}
-
-ffvim(){
-  find . -iname "*$1*" -exec nvim {} + ;
 }
 
 killport(){
@@ -210,3 +183,4 @@ function pwto() {
 ###############
 mkdir -p "$HOME/.vim_backup"
 source "$HOME/.cargo/env"
+eval "$(starship init bash)"
