@@ -34,6 +34,9 @@ alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 alias hc="hg ci -m"
 alias fb="mosh fb"
 alias ght="echo $GITHUB_TOKEN"
+if command -v batcat &> /dev/null; then
+  alias bat="batcat"
+fi
 
 if [ -n "$DEVSERVER" ]; then
   alias adp="jf s -n"
@@ -45,6 +48,9 @@ if [ -n "$DEVSERVER" ]; then
   alias had="ham && jf s"
   alias hads="ham && jf s --draft"
   alias hdr="hg diff -r .^"
+
+  # proxy commands
+  alias proxy_nvim='env $(fwdproxy-config --format=sh curl) nvim'
 
   # cd shortcuts
   alias CF="cd ~/configerator"
