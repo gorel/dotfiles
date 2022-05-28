@@ -93,7 +93,7 @@ vim.cmd [[
 ]]
 
 -- set up my colorscheme
-vim.cmd [[silent! colorscheme base16-circus]]
+vim.cmd [[silent! colorscheme jellybeans]]
 
 -- Close vim if the last buffer is deleted
 vim.cmd [[
