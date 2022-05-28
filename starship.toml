@@ -68,6 +68,9 @@ disabled = true
 [python]
 format = "[$symbol$version]($style) "
 style = "bold green"
+# Only use the python3 binary to get the version.
+python_binary = "python3"
+
 
 [rust]
 format = "[$symbol$version]($style) "

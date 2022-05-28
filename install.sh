@@ -13,23 +13,31 @@ if [[ "$devserver_env" == "y" || "$devserver_env" == "Y" ]]; then
     echo "DEVSERVER=1" >> "$HOME/.env_vars"
 fi
 
-read -rp "Install nvim? [Y/n] " install_nvim
-if [[ "$install_nvim" == "y" || "$install_nvim" == "Y" ]]; then
+if command -v nvim &>/dev/null; then
     sudo add-apt-repository ppa:neovim-ppa/unstable
     sudo apt-get update
     sudo apt-get install -y neovim
 fi
 
-read -rp "Install starship (prompt line)? [Y/n] " install_starship
-if [[ "$install_starship" == "y" || "$install_starship" == "Y" ]]; then
+if command -v starship &>/dev/null; then
+  echo "Installing starship"
   curl -sS https://starship.rs/install.sh | sh
 fi
 
+if command -v mcfly &>/dev/null; then
+  echo "Installing mcfly"
+  curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --git cantino/mcfly
+fi
+
 cd "$(dirname "$0")" || exit 1
-echo "My directory is $(pwd)"
-echo "Link .bashrc"
+echo "Link .bashrc and .zshrc"
 ln -s "$PWD/.bashrc" "$HOME/.bashrc"
-ln -s "$PWD/.bash_aliases" "$HOME/.bash_aliases"
+ln -s "$PWD/.zshrc" "$HOME/.zshrc"
+if [ ! -d "$HOME/.zgen" ]; then
+  echo "Cloning zgen"
+  git clone "https://github.com/tarjoilija/zgen.git" "${HOME}/.zgen"
+fi
+ln -s "$PWD/.aliases" "$HOME/.aliases"
 
 echo "Link .dircolors"
 ln -s "$PWD/.dircolors" "$HOME/.dircolors"
@@ -53,10 +61,8 @@ echo "Link nvim files"
 mkdir -p "$HOME/.config/"
 ln -s "$PWD/nvim/" "$HOME/.config/nvim"
 
-read -rp "Run PackerSync now? [Y/n] " run_packersync
-if [[ "$run_packersync" == "y" || "$run_packersync" == "Y" ]]; then
-  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-fi
+echo "Run PackerSync"
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 echo "Link starship config"
 mkdir -p "$HOME/.config/"
