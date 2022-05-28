@@ -20,7 +20,7 @@ if [[ "$install_nvim" == "y" || "$install_nvim" == "Y" ]]; then
     sudo apt-get install -y neovim
 fi
 
-read -rp "Install starship (prompt line)? [Y/n]" install_starship
+read -rp "Install starship (prompt line)? [Y/n] " install_starship
 if [[ "$install_starship" == "y" || "$install_starship" == "Y" ]]; then
   curl -sS https://starship.rs/install.sh | sh
 fi
@@ -52,6 +52,11 @@ ln -s "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 echo "Link nvim files"
 mkdir -p "$HOME/.config/"
 ln -s "$PWD/nvim/" "$HOME/.config/nvim"
+
+read -rp "Run PackerSync now? [Y/n] " run_packersync
+if [[ "$run_packersync" == "y" || "$run_packersync" == "Y" ]]; then
+  nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
+fi
 
 echo "Link starship config"
 mkdir -p "$HOME/.config/"
