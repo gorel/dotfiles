@@ -29,8 +29,8 @@ touch "$HOME/.env_vars"
 source "$HOME/.env_vars"
 
 # Alias definitions.
-if [ -f ~/.aliases ]; then
-    . ~/.aliases
+if [ -f "$HOME/.aliases" ]; then
+    source "$HOME/.aliases"
 fi
 
 # if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
