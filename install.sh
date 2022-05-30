@@ -24,48 +24,69 @@ if command -v starship &>/dev/null; then
   curl -sS https://starship.rs/install.sh | sh
 fi
 
+if command -v j &>/dev/null; then
+  echo "Installing autojump"
+  sudo apt-get install -y autojump
+fi
+
 if command -v mcfly &>/dev/null; then
   echo "Installing mcfly"
   curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --git cantino/mcfly
 fi
 
+if command -v batcat &>/dev/null; then
+    echo "Installing bat"
+    sudo apt-get install -y bat
+fi
+
+if command -v rg &>/dev/null; then
+    echo "Installing ripgrep"
+    sudo apt-get install ripgrep
+fi
+
+if command -v diff-so-fancy &>/dev/null; then
+    sudo add-apt-repository ppa:aos1/diff-so-fancy
+    sudo apt update
+    sudo apt-get install -y diff-so-fancy
+fi
+
 cd "$(dirname "$0")" || exit 1
 echo "Link .bashrc and .zshrc"
-ln -s "$PWD/.bashrc" "$HOME/.bashrc"
-ln -s "$PWD/.zshrc" "$HOME/.zshrc"
+ln -nsf "$PWD/.bashrc" "$HOME/.bashrc"
+ln -nsf "$PWD/.zshrc" "$HOME/.zshrc"
 if [ ! -d "$HOME/.zgen" ]; then
   echo "Cloning zgen"
   git clone "https://github.com/tarjoilija/zgen.git" "${HOME}/.zgen"
 fi
-ln -s "$PWD/.aliases" "$HOME/.aliases"
+ln -nsf "$PWD/.aliases" "$HOME/.aliases"
 
 echo "Link .dircolors"
-ln -s "$PWD/.dircolors" "$HOME/.dircolors"
+ln -nsf "$PWD/.dircolors" "$HOME/.dircolors"
 
 echo "Link .gitconfig"
-ln -s "$PWD/.gitconfig" "$HOME/.gitconfig"
+ln -nsf "$PWD/.gitconfig" "$HOME/.gitconfig"
 
 echo "Link .hgrc"
-ln -s "$PWD/.hgrc" "$HOME/.hgrc"
+ln -nsf "$PWD/.hgrc" "$HOME/.hgrc"
 
 echo "Link .inputrc"
-ln -s "$PWD/.inputrc" "$HOME/.inputrc"
+ln -nsf "$PWD/.inputrc" "$HOME/.inputrc"
 
 echo "Link .vimrc and neovim init.vim"
-ln -s "$PWD/.vimrc" "$HOME/.vimrc"
+ln -nsf "$PWD/.vimrc" "$HOME/.vimrc"
 
 echo "Link .tmux.conf"
-ln -s "$PWD/.tmux.conf" "$HOME/.tmux.conf"
+ln -nsf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 
 echo "Link nvim files"
 mkdir -p "$HOME/.config/"
-ln -s "$PWD/nvim/" "$HOME/.config/nvim"
+ln -nsf "$PWD/nvim/" "$HOME/.config/nvim"
 
 echo "Run PackerSync"
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
 echo "Link starship config"
 mkdir -p "$HOME/.config/"
-ln -s "$PWD/starship.toml" "$HOME/.config/starship.toml"
+ln -nsf "$PWD/starship.toml" "$HOME/.config/starship.toml"
 
-echo "All done! You should run 'source ~/.bashrc' now to get the new changes."
+echo "All done! You should run 'source ~/.zshrc' now to get the new changes."

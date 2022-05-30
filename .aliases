@@ -43,6 +43,7 @@ alias fuck='eval "sudo $(fc -ln -1)"'
 alias ght="echo $GITHUB_TOKEN"
 if command -v batcat &> /dev/null; then
   alias bat="batcat"
+  alias cat="batcat"
 fi
 
 if [ -n "$DEVSERVER" ]; then
