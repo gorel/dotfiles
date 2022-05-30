@@ -89,4 +89,8 @@ echo "Link starship config"
 mkdir -p "$HOME/.config/"
 ln -nsf "$PWD/starship.toml" "$HOME/.config/starship.toml"
 
+echo "Link git_env_password.sh script"
+mkdir -p "$HOME/bin/"
+ln -nsf "$PWD/git_env_password.sh" "$HOME/bin/git_env_password.sh"
+
 echo "All done! You should run 'source ~/.zshrc' now to get the new changes."

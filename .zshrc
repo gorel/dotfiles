@@ -5,6 +5,7 @@ setopt rm_star_silent
 export EDITOR="nvim"
 export VISUAL="nvim"
 export GIT_EDITOR="nvim"
+export GIT_ASKPASS="git_env_password.sh"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
