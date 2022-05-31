@@ -551,6 +551,15 @@ function M.setup()
       end,
     }
 
+    -- renamer.nvim
+    use {
+      "filipdutescu/renamer.nvim",
+      module = { "renamer" },
+      config = function()
+        require("renamer").setup {}
+      end,
+    }
+
     -- Rust
     use {
       "simrat39/rust-tools.nvim",
