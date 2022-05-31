@@ -57,21 +57,21 @@ function M.setup()
     }
 
     -- Colorschemes
-    use "ackyshake/spacegray.vim"
-    use "atelierbram/Base2Tone-vim"
-    use "chriskempson/base16-vim"
-    use "embark-theme/vim"
+    -- use "ackyshake/spacegray.vim"
+    -- use "atelierbram/Base2Tone-vim"
+    -- use "chriskempson/base16-vim"
+    -- use "embark-theme/vim"
     use "folke/tokyonight.nvim"
-    use "joshdick/onedark.vim"
-    use "marko-cerovac/material.nvim"
-    use "nanotech/jellybeans.vim"
-    use "preservim/vim-colors-pencil"
-    use "sainnhe/everforest"
-    use "sainnhe/gruvbox-material"
-    use "sainnhe/sonokai"
-    use "sickill/vim-monokai"
-    use "tomasr/molokai"
-    use "w0ng/vim-hybrid"
+    -- use "joshdick/onedark.vim"
+    -- use "marko-cerovac/material.nvim"
+    -- use "nanotech/jellybeans.vim"
+    -- use "preservim/vim-colors-pencil"
+    -- use "sainnhe/everforest"
+    -- use "sainnhe/gruvbox-material"
+    -- use "sainnhe/sonokai"
+    -- use "sickill/vim-monokai"
+    -- use "tomasr/molokai"
+    -- use "w0ng/vim-hybrid"
 
     -- Startup screen
     use {
