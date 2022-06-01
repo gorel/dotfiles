@@ -87,6 +87,8 @@ bindkey '^j' autosuggest-accept
 # PATH exports #
 ################
 export PATH="$HOME/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+source "$HOME/.cargo/env"
 
 ############
 # FB Stuff #
@@ -108,3 +110,7 @@ eval "$(starship init zsh)"
 # ctrl+r hist #
 ###############
 eval "$(mcfly init zsh)"
+
+# Generated for envman. Do not edit.
+[ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
+

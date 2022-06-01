@@ -3,51 +3,67 @@
 echo "This will overwrite various .*rc files in your homedir."
 read -rp "Continue? [Y/n] " continue_var
 if [[ "$continue_var" != "y" && "$continue_var" != "Y" ]]; then
-    echo "Exiting"
-    exit 0
+	echo "Exiting"
+	exit 0
 fi
 
 read -rp "Should DEVSERVER env var be set? [Y/n] " devserver_env
 if [[ "$devserver_env" == "y" || "$devserver_env" == "Y" ]]; then
-    echo "Writing DEVSERVER=1 to .env_vars"
-    echo "DEVSERVER=1" >> "$HOME/.env_vars"
+	echo "Writing DEVSERVER=1 to .env_vars"
+	echo "DEVSERVER=1" >>"$HOME/.env_vars"
 fi
 
-if command -v nvim &>/dev/null; then
-    sudo add-apt-repository ppa:neovim-ppa/unstable
-    sudo apt-get update
-    sudo apt-get install -y neovim
+if ! command -v nvim &>/dev/null; then
+	sudo add-apt-repository ppa:neovim-ppa/unstable
+	sudo apt-get update
+	sudo apt-get install -y neovim
 fi
 
-if command -v starship &>/dev/null; then
-  echo "Installing starship"
-  curl -sS https://starship.rs/install.sh | sh
+if ! command -v starship &>/dev/null; then
+	echo "Installing starship"
+	curl -sS https://starship.rs/install.sh | sh
 fi
 
-if command -v j &>/dev/null; then
-  echo "Installing autojump"
-  sudo apt-get install -y autojump
+if ! command -v j &>/dev/null; then
+	echo "Installing autojump"
+	sudo apt-get install -y autojump
 fi
 
-if command -v mcfly &>/dev/null; then
-  echo "Installing mcfly"
-  curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --git cantino/mcfly
+if ! command -v mcfly &>/dev/null; then
+	echo "Installing mcfly"
+	curl -LSfs https://raw.githubusercontent.com/cantino/mcfly/master/ci/install.sh | sudo sh -s -- --git cantino/mcfly
 fi
 
-if command -v batcat &>/dev/null; then
-    echo "Installing bat"
-    sudo apt-get install -y bat
+if ! command -v batcat &>/dev/null; then
+	echo "Installing bat"
+	sudo apt-get install -y bat
 fi
 
-if command -v rg &>/dev/null; then
-    echo "Installing ripgrep"
-    sudo apt-get install ripgrep
+if ! command -v rg &>/dev/null; then
+	echo "Installing ripgrep"
+	sudo apt-get install ripgrep
 fi
 
-if command -v diff-so-fancy &>/dev/null; then
-    sudo add-apt-repository ppa:aos1/diff-so-fancy
-    sudo apt update
-    sudo apt-get install -y diff-so-fancy
+if ! command -v diff-so-fancy &>/dev/null; then
+	echo "Installing diff-so-fancy"
+	sudo add-apt-repository ppa:aos1/diff-so-fancy
+	sudo apt update
+	sudo apt-get install -y diff-so-fancy
+fi
+
+if ! command -v flake8; then
+	echo "Installing flake8"
+	sudo apt-get install -y flake8
+fi
+
+if ! command -v shfmt; then
+	echo "Installing shfmt"
+	curl -sS https://webinstall.dev/shfmt | bash
+fi
+
+if ! command -v isort; then
+	echo "Installing isort"
+	python3 -m pip install isort
 fi
 
 cd "$(dirname "$0")" || exit 1
@@ -55,8 +71,8 @@ echo "Link .bashrc and .zshrc"
 ln -nsf "$PWD/.bashrc" "$HOME/.bashrc"
 ln -nsf "$PWD/.zshrc" "$HOME/.zshrc"
 if [ ! -d "$HOME/.zgen" ]; then
-  echo "Cloning zgen"
-  git clone "https://github.com/tarjoilija/zgen.git" "${HOME}/.zgen"
+	echo "Cloning zgen"
+	git clone "https://github.com/tarjoilija/zgen.git" "${HOME}/.zgen"
 fi
 ln -nsf "$PWD/.aliases" "$HOME/.aliases"
 
