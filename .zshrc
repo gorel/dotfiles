@@ -6,6 +6,11 @@ export EDITOR="nvim"
 export VISUAL="nvim"
 export GIT_EDITOR="nvim"
 export GIT_ASKPASS="git_env_password.sh"
+export MCFLY_KEY_SCHEME=vim
+
+# Locale exports because some stuff is breaking on devserver?
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
@@ -60,6 +65,13 @@ if ! zgen saved; then
   # generate the init script from plugins above
   zgen save
 fi
+
+###############################
+# Useful when mosh gets stuck #
+###############################
+killmosh(){
+  kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)
+}
 
 ##############
 # Enable vim #
