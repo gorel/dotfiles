@@ -86,6 +86,7 @@ bindkey '^j' autosuggest-accept
 ################
 # PATH exports #
 ################
+export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 source "$HOME/.cargo/env"
