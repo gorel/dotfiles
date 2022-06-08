@@ -65,6 +65,11 @@ vim.cmd [[
   set foldexpr=nvim_treesitter#foldexpr()
 ]]
 
+-- Use Lua filetype
+vim.cmd [[
+  let g:do_filetype_lua = 1
+]]
+
 -- show cursor line only in active window
 vim.cmd [[
   autocmd InsertLeave,WinEnter * set cursorline
