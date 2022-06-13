@@ -144,6 +144,7 @@ export VISUAL=nvim
 export PYTHONDONTWRITEBYTECODE=True
 export LANG=en_US.UTF-8
 export GIT_ASKPASS="git_env_password.sh"
+export MCFLY_KEY_SCHEME=vim
 
 # Makefile autocomplete
 complete -W "\`grep -oE '^[a-zA-Z0-9_.-]+:([^=]|$)' Makefile | sed 's/[^a-zA-Z0-9_.-]*$//'\`" make

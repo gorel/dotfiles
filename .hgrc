@@ -21,4 +21,4 @@ vimdiff.executable = vim
 vimdiff.args = -d $base $local $output $other +close +close
 
 [hint]
-ack = undo
+ack = undo commitcloud-old-commits

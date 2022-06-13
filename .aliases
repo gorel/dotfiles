@@ -44,6 +44,8 @@ alias ght="echo $GITHUB_TOKEN"
 if command -v batcat &> /dev/null; then
   alias bat="batcat"
   alias cat="batcat"
+elif command -v bat &> /dev/null; then
+  alias cat="bat"
 fi
 
 if [ -n "$DEVSERVER" ]; then

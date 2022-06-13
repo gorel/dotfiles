@@ -687,7 +687,12 @@ function M.setup()
 
     -- Performance
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
-    use { "nathom/filetype.nvim" }
+    use {
+      "nathom/filetype.nvim",
+      config = function()
+        require("config.filetype").setup()
+      end,
+    }
 
     -- Web
     use {
