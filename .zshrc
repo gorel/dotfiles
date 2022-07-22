@@ -92,6 +92,11 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 source "$HOME/.cargo/env"
 
+##################################
+# Hide stupid warnings in Python #
+##################################
+export PYTHONWARNINGS="ignore"
+
 ############
 # FB Stuff #
 ############
