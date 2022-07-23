@@ -28,7 +28,7 @@ local sources = {
 
   -- diagnostics
   b.diagnostics.write_good,
-  -- b.diagnostics.markdownlint,
+  b.diagnostics.cppcheck,
   b.diagnostics.eslint_d,
   b.diagnostics.flake8,
   b.diagnostics.tsc,
@@ -38,6 +38,7 @@ local sources = {
   b.code_actions.gitsigns,
   b.code_actions.eslint_d,
   b.code_actions.gitrebase,
+  b.code_actions.xo,
 
   -- hover
   b.hover.dictionary,
