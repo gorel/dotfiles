@@ -1,5 +1,5 @@
 [user]
-	email = gorel@fb.com
+	email = gorel@meta.com
 	name = Logan Gore
 
 [alias]
@@ -45,3 +45,8 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
+[http]
+    proxy=https://fwdproxy:8082
+    proxySSLCert=/var/facebook/credentials/gorel/x509/gorel.pem
+    proxySSLKey=/var/facebook/credentials/gorel/x509/gorel.pem
