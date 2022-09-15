@@ -13,7 +13,19 @@ if [[ "$devserver_env" == "y" || "$devserver_env" == "Y" ]]; then
 	echo "DEVSERVER=1" >>"$HOME/.env_vars"
 fi
 
+if ! command -v cargo &>/dev/null; then
+	echo "Installing Cargo"
+	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+fi
+
+read -rp "Install zellij? [Y/n] " install_zellij
+if [[ "$install_zellij" == "y" || "$install_zellij" == "Y" ]]; then
+	echo "Installing zellij"
+	cargo +nightly install zellij
+fi
+
 if ! command -v nvim &>/dev/null; then
+	echo "Installing neovim"
 	sudo add-apt-repository ppa:neovim-ppa/unstable
 	sudo apt-get update
 	sudo apt-get install -y neovim
@@ -97,6 +109,9 @@ ln -nsf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 echo "Link nvim files"
 mkdir -p "$HOME/.config/"
 ln -nsf "$PWD/nvim/" "$HOME/.config/nvim"
+
+echo "Link zellij config"
+ln -nsf "$PWD/zellij" "$HOME/.config/zellij"
 
 echo "Run PackerSync"
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
