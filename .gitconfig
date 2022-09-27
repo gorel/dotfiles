@@ -45,8 +45,3 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
-
-[http]
-    proxy=https://fwdproxy:8082
-    proxySSLCert=/var/facebook/credentials/gorel/x509/gorel.pem
-    proxySSLKey=/var/facebook/credentials/gorel/x509/gorel.pem
