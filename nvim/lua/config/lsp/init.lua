@@ -1,6 +1,7 @@
 local M = {}
 
 local servers = {
+  gopls = {},
   pyright = {},
   rust_analyzer = {
     settings = {
