@@ -581,6 +581,8 @@ function M.setup()
       end,
     }
 
+    use "fatih/vim-go"
+
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",
