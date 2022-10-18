@@ -466,7 +466,7 @@ function M.setup()
         wants = {
           "nvim-lsp-installer",
           "cmp-nvim-lsp",
-          "lua-dev.nvim",
+          "neodev.nvim",
           "vim-illuminate",
           "null-ls.nvim",
           "schemastore.nvim",
@@ -477,7 +477,7 @@ function M.setup()
         end,
         requires = {
           "williamboman/nvim-lsp-installer",
-          "folke/lua-dev.nvim",
+          "folke/neodev.nvim",
           "RRethy/vim-illuminate",
           "jose-elias-alvarez/null-ls.nvim",
           {
@@ -503,7 +503,7 @@ function M.setup()
           "nvim-lsp-installer",
           "lsp_signature.nvim",
           "coq_nvim",
-          "lua-dev.nvim",
+          "neodev.nvim",
           "vim-illuminate",
           "null-ls.nvim",
           "schemastore.nvim",
@@ -515,7 +515,7 @@ function M.setup()
         requires = {
           "williamboman/nvim-lsp-installer",
           "ray-x/lsp_signature.nvim",
-          "folke/lua-dev.nvim",
+          "folke/neodev.nvim",
           "RRethy/vim-illuminate",
           "jose-elias-alvarez/null-ls.nvim",
           {
