@@ -15,7 +15,7 @@ PLUGINS = {
     enabled = true,
   },
   nvim_dap = {
-    enabled = true,
+    enabled = false,
   },
   vimspector = {
     enabled = false,

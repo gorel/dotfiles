@@ -121,45 +121,6 @@ local function normal_keymap()
     ["5"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,1)<Cr>", "Command 1" },
     ["6"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,2)<Cr>", "Command 2" },
 
-    t = {
-      name = "Test",
-      S = { "<cmd>UltestSummary<cr>", "Summary" },
-      a = { "<cmd>Ultest<cr>", "All" },
-      c = { "<cmd>UltestClear<cr>", "Clear" },
-      d = { "<cmd>UltestDebug<cr>", "Debug" },
-      f = { "<cmd>TestFile<cr>", "File" },
-      l = { "<cmd>TestLast<cr>", "Last" },
-      n = { "<cmd>TestNearest<cr>", "Nearest" },
-      o = { "<cmd>UltestOutput<cr>", "Output" },
-      s = { "<cmd>TestSuite<cr>", "Suite" },
-      v = { "<cmd>TestVisit<cr>", "Visit" },
-    },
-
-    r = {
-      name = "Refactor",
-      i = { [[ <Esc><Cmd>lua require('refactoring').refactor('Inline Variable')<CR>]], "Inline Variable" },
-      p = { [[ <Esc><Cmd>lua require('refactoring').debug.printf({below = false})<CR>]], "Debug Print" },
-      c = { [[ <Esc><Cmd>lua require('refactoring').debug.cleanup({below = false})<CR>]], "Debug Cleanup" },
-    },
-
-    v = {
-      name = "Vimspector",
-      G = { "<cmd>lua require('config.vimspector').generate_debug_profile()<cr>", "Generate Debug Profile" },
-      I = { "<cmd>VimspectorInstall<cr>", "Install" },
-      U = { "<cmd>VimspectorUpdate<cr>", "Update" },
-      R = { "<cmd>call vimspector#RunToCursor()<cr>", "Run to Cursor" },
-      c = { "<cmd>call vimspector#Continue()<cr>", "Continue" },
-      i = { "<cmd>call vimspector#StepInto()<cr>", "Step Into" },
-      o = { "<cmd>call vimspector#StepOver()<cr>", "Step Over" },
-      s = { "<cmd>call vimspector#Launch()<cr>", "Start" },
-      t = { "<cmd>call vimspector#ToggleBreakpoint()<cr>", "Toggle Breakpoint" },
-      u = { "<cmd>call vimspector#StepOut()<cr>", "Step Out" },
-      S = { "<cmd>call vimspector#Stop()<cr>", "Stop" },
-      r = { "<cmd>call vimspector#Restart()<cr>", "Restart" },
-      x = { "<cmd>VimspectorReset<cr>", "Reset" },
-      H = { "<cmd>lua require('config.vimspector').toggle_human_mode()<cr>", "Toggle HUMAN mode" },
-    },
-
     z = {
       name = "System",
       c = { "<cmd>PackerCompile<cr>", "Compile" },

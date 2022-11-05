@@ -41,9 +41,6 @@ function M.setup()
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
 
-    -- Performance
-    use { "lewis6991/impatient.nvim" }
-
     -- Load only when require
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
@@ -57,21 +54,7 @@ function M.setup()
     }
 
     -- Colorschemes
-    -- use "ackyshake/spacegray.vim"
-    -- use "atelierbram/Base2Tone-vim"
-    -- use "chriskempson/base16-vim"
-    -- use "embark-theme/vim"
-    use "folke/tokyonight.nvim"
-    -- use "joshdick/onedark.vim"
-    -- use "marko-cerovac/material.nvim"
-    -- use "nanotech/jellybeans.vim"
-    -- use "preservim/vim-colors-pencil"
-    -- use "sainnhe/everforest"
-    -- use "sainnhe/gruvbox-material"
-    -- use "sainnhe/sonokai"
-    -- use "sickill/vim-monokai"
-    -- use "tomasr/molokai"
-    -- use "w0ng/vim-hybrid"
+    use { "folke/tokyonight.nvim" }
 
     -- Startup screen
     use {
@@ -80,9 +63,6 @@ function M.setup()
         require("config.alpha").setup()
       end,
     }
-
-    -- Better Netrw
-    use { "tpope/vim-vinegar" }
 
     -- Git
     use {
@@ -260,6 +240,17 @@ function M.setup()
         require("nvim-gps").setup()
       end,
     }
+    use {
+      "vimpostor/vim-tpipeline",
+      config = function()
+        vim.cmd [[
+          if system('pgrep tmux')
+          " prevent statusline duplication when tmux is running
+          autocmd BufRead,BufNewFile,BufEnter,BufWinEnter * set laststatus=0
+          endif
+        ]]
+      end,
+    }
 
     -- Treesitter
     use {
@@ -310,7 +301,6 @@ function M.setup()
           "telescope-file-browser.nvim",
           "project.nvim",
           "trouble.nvim",
-          "telescope-dap.nvim",
         },
         requires = {
           "nvim-lua/popup.nvim",
@@ -325,7 +315,6 @@ function M.setup()
               require("project_nvim").setup {}
             end,
           },
-          "nvim-telescope/telescope-dap.nvim",
         },
       }
     end
@@ -460,9 +449,6 @@ function M.setup()
         "neovim/nvim-lspconfig",
         opt = true,
         event = "VimEnter",
-        -- event = { "BufReadPre" },
-        -- keys = { "<leader>l", "<leader>f" },
-        -- wants = { "nvim-lsp-installer", "lsp_signature.nvim", "cmp-nvim-lsp" },
         wants = {
           "nvim-lsp-installer",
           "cmp-nvim-lsp",
@@ -551,15 +537,6 @@ function M.setup()
       end,
     }
 
-    -- renamer.nvim
-    use {
-      "filipdutescu/renamer.nvim",
-      module = { "renamer" },
-      config = function()
-        require("renamer").setup {}
-      end,
-    }
-
     -- Rust
     use {
       "simrat39/rust-tools.nvim",
@@ -567,12 +544,10 @@ function M.setup()
       opt = true,
       module = "rust-tools",
       ft = { "rust" },
-      config = function()
-        require("config.rust").setup()
-      end,
     }
 
     -- Go
+    use { "fatih/vim-go" }
     use {
       "ray-x/go.nvim",
       ft = { "go" },
@@ -580,8 +555,6 @@ function M.setup()
         require("go").setup()
       end,
     }
-
-    use "fatih/vim-go"
 
     -- Terminal
     use {
@@ -593,101 +566,8 @@ function M.setup()
       end,
     }
 
-    -- Debugging
-    use {
-      "mfussenegger/nvim-dap",
-      opt = true,
-      -- event = "BufReadPre",
-      keys = { [[<leader>d]] },
-      module = { "dap" },
-      wants = { "nvim-dap-virtual-text", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
-      requires = {
-        "theHamsta/nvim-dap-virtual-text",
-        "rcarriga/nvim-dap-ui",
-        "mfussenegger/nvim-dap-python",
-        "nvim-telescope/telescope-dap.nvim",
-        { "leoluz/nvim-dap-go", module = "dap-go" },
-        { "jbyuki/one-small-step-for-vimkind", module = "osv" },
-      },
-      config = function()
-        require("config.dap").setup()
-      end,
-      disable = not PLUGINS.nvim_dap,
-    }
-
-    -- vimspector
-    use {
-      "puremourning/vimspector",
-      cmd = { "VimspectorInstall", "VimspectorUpdate" },
-      fn = { "vimspector#Launch()", "vimspector#ToggleBreakpoint", "vimspector#Continue" },
-      config = function()
-        require("config.vimspector").setup()
-      end,
-    }
-
-    -- Test
-    use {
-      "rcarriga/vim-ultest",
-      requires = { "vim-test/vim-test" },
-      opt = true,
-      keys = { "<leader>t" },
-      cmd = {
-        "TestNearest",
-        "TestFile",
-        "TestSuite",
-        "TestLast",
-        "TestVisit",
-        "Ultest",
-        "UltestNearest",
-        "UltestDebug",
-        "UltestLast",
-        "UltestSummary",
-      },
-      module = "ultest",
-      run = ":UpdateRemotePlugins",
-      config = function()
-        require("config.test").setup()
-      end,
-    }
-
-    -- AI completion
-    use { "github/copilot.vim", event = "InsertEnter" }
-
-    -- Legendary
-    use {
-      "mrjones2014/legendary.nvim",
-      opt = true,
-      keys = { [[<C-p>]] },
-      wants = { "dressing.nvim" },
-      config = function()
-        require("config.legendary").setup()
-      end,
-      requires = { "stevearc/dressing.nvim" },
-    }
-
-    -- Harpoon
-    use {
-      "ThePrimeagen/harpoon",
-      keys = { [[<leader>j]] },
-      module = { "harpoon", "harpoon.cmd-ui", "harpoon.mark", "harpoon.ui", "harpoon.term" },
-      wants = { "telescope.nvim" },
-      config = function()
-        require("config.harpoon").setup()
-      end,
-    }
-
-    -- Refactoring
-    use {
-      "ThePrimeagen/refactoring.nvim",
-      module = { "refactoring", "telescope" },
-      keys = { [[<leader>r]] },
-      wants = { "telescope.nvim" },
-      config = function()
-        require("config.refactoring").setup()
-      end,
-    }
-
     -- Performance
+    use { "lewis6991/impatient.nvim" }
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
     use {
       "nathom/filetype.nvim",
@@ -711,19 +591,6 @@ function M.setup()
       end,
     }
 
-    --  Copy vim statusline into tmux statusline
-    use {
-      "vimpostor/vim-tpipeline",
-      config = function()
-        vim.cmd [[
-          if system('pgrep tmux')
-          " prevent statusline duplication when tmux is running
-          autocmd BufRead,BufNewFile,BufEnter,BufWinEnter * set laststatus=0
-          endif
-        ]]
-      end,
-    }
-
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
@@ -737,7 +604,6 @@ function M.setup()
 
   -- Performance
   pcall(require, "impatient")
-  -- pcall(require, "packer_compiled")
 
   packer.init(conf)
   packer.startup(plugins)

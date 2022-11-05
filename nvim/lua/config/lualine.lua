@@ -57,29 +57,6 @@ local function lsp_client(msg)
   return "[" .. table.concat(buf_client_names, ", ") .. "]"
 end
 
--------- use fidget.nvim ------
--- local function lsp_progress(_, is_active)
---   if not is_active then
---     return
---   end
---   local messages = vim.lsp.util.get_progress_messages()
---   if #messages == 0 then
---     return ""
---   end
---   local status = {}
---   for _, msg in pairs(messages) do
---     local title = ""
---     if msg.title then
---       title = msg.title
---     end
---     table.insert(status, (msg.percentage or 0) .. "%% " .. title)
---   end
---   local spinners = { "⠋", "⠙", "⠹", "⠸", "⠼", "⠴", "⠦", "⠧", "⠇", "⠏" }
---   local ms = vim.loop.hrtime() / 1000000
---   local frame = math.floor(ms / 120) % #spinners
---   return table.concat(status, "  ") .. " " .. spinners[frame + 1]
--- end
-
 function M.setup()
   local gps = require "nvim-gps"
 
