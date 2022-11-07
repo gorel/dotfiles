@@ -41,7 +41,7 @@ function M.setup()
   local function plugins(use)
     use { "wbthomason/packer.nvim" }
 
-    -- Load only when require
+    -- Load only when required
     use { "nvim-lua/plenary.nvim", module = "plenary" }
 
     -- Notification
@@ -450,7 +450,9 @@ function M.setup()
         opt = true,
         event = "VimEnter",
         wants = {
-          "nvim-lsp-installer",
+          "mason.nvim",
+          "mason-lspconfig.nvim",
+          "mason-tool-installer.nvim",
           "cmp-nvim-lsp",
           "neodev.nvim",
           "vim-illuminate",
@@ -462,7 +464,9 @@ function M.setup()
           require("config.lsp").setup()
         end,
         requires = {
-          "williamboman/nvim-lsp-installer",
+          "williamboman/mason.nvim",
+          "williamboman/mason-lspconfig.nvim",
+          "WhoIsSethDaniel/mason-tool-installer.nvim",
           "folke/neodev.nvim",
           "RRethy/vim-illuminate",
           "jose-elias-alvarez/null-ls.nvim",
@@ -544,6 +548,9 @@ function M.setup()
       opt = true,
       module = "rust-tools",
       ft = { "rust" },
+      config = function()
+        require("rust-tools").setup {}
+      end,
     }
 
     -- Go
@@ -588,6 +595,27 @@ function M.setup()
       ft = { "json" },
       config = function()
         require("config.package").setup()
+      end,
+    }
+
+    -- Debugging
+    use {
+      "mfussenegger/nvim-dap",
+      opt = true,
+      event = "BufReadPre",
+      module = { "dap" },
+      wants = { "nvim-dap-virtual-text", "DAPInstall.nvim", "nvim-dap-ui", "nvim-dap-python", "which-key.nvim" },
+      requires = {
+        "Pocco81/DAPInstall.nvim",
+        "theHamsta/nvim-dap-virtual-text",
+        "rcarriga/nvim-dap-ui",
+        "mfussenegger/nvim-dap-python",
+        "nvim-telescope/telescope-dap.nvim",
+        { "leoluz/nvim-dap-go", module = "dap-go" },
+        { "jbyuki/one-small-step-for-vimkind", module = "osv" },
+      },
+      config = function()
+        require("config.dap").setup()
       end,
     }
 

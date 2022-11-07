@@ -2,6 +2,14 @@ local M = {}
 
 local servers = {
   gopls = {},
+  html = {},
+  jsonls = {
+    settings = {
+      json = {
+        schemas = require("schemastore").json.schemas(),
+      },
+    },
+  },
   pyright = {},
   rust_analyzer = {
     settings = {
