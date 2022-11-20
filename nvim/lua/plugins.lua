@@ -576,12 +576,12 @@ function M.setup()
     -- Performance
     use { "lewis6991/impatient.nvim" }
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
-    use {
-      "nathom/filetype.nvim",
-      config = function()
-        require("config.filetype").setup()
-      end,
-    }
+    -- use {
+    --   "nathom/filetype.nvim",
+    --   config = function()
+    --     require("config.filetype").setup()
+    --   end,
+    -- }
 
     -- Web
     use {
