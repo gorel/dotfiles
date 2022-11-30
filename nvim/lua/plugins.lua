@@ -149,7 +149,21 @@ function M.setup()
     -- Better surround
     use { "tpope/vim-surround", event = "InsertEnter" }
 
+    -- Better dot repeat
+   use {
+      "tpope/vim-repeat",
+      commit = "24afe922e6a05891756ecf331f39a1f6743d3d5a",
+   }
+
     -- Motions
+    use {
+      "ggandor/leap.nvim",
+      config = function()
+        require("leap").setup {}
+      end,
+      requires = "tpope/vim-repeat",
+    }
+
     use { "andymass/vim-matchup", event = "CursorMoved" }
     use { "wellle/targets.vim", event = "CursorMoved" }
     use { "unblevable/quick-scope", event = "CursorMoved", disable = false }
@@ -193,22 +207,6 @@ function M.setup()
         require("neogen").setup {}
       end,
       cmd = { "Neogen" },
-    }
-
-    use {
-      "phaazon/hop.nvim",
-      cmd = { "HopWord", "HopChar1" },
-      config = function()
-        require("hop").setup {}
-      end,
-      disable = true,
-    }
-    use {
-      "ggandor/lightspeed.nvim",
-      keys = { "s", "S", "f", "F", "t", "T" },
-      config = function()
-        require("lightspeed").setup {}
-      end,
     }
 
     -- Markdown
