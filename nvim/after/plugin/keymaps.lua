@@ -34,10 +34,6 @@ keymap("n", "<Right>", ":vertical resize -1<CR>", default_opts)
 keymap("n", "<Up>", ":resize -1<CR>", default_opts)
 keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 
--- Insert blank line
-keymap("n", "]<Space>", "o<Esc>", default_opts)
-keymap("n", "[<Space>", "O<Esc>", default_opts)
-
 -- Dial (increment/decrement)
 keymap("n", "<C-a>", require("dial.map").inc_normal(), default_opts)
 keymap("n", "<C-x>", require("dial.map").dec_normal(), default_opts)
@@ -46,7 +42,9 @@ keymap("v", "<C-x>", require("dial.map").dec_visual(), default_opts)
 keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), default_opts)
 keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), default_opts)
 
--- Renamer
-keymap("i", "<F2>", '<cmd>lua require("renamer").rename()<cr>', default_opts)
-keymap("n", "<leader>nn", '<cmd>lua require("renamer").rename()<cr>', default_opts)
-keymap("v", "<leader>nn", '<cmd>lua require("renamer").rename()<cr>', default_opts)
+-- Copy to system clipboard with OSCYank
+keymap("v", "<leader>y", ":OSCYank<CR>", default_opts)
+
+-- Navigate buffers with tab/shift-tab
+keymap("n", "<TAB>", ":bnext<CR>", default_opts)
+keymap("n", "<S-TAB>", ":bprevious<CR>", default_opts)

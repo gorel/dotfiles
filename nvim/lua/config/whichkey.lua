@@ -71,7 +71,6 @@ local function normal_keymap()
     ["w"] = { "<cmd>update!<CR>", "Save" },
     ["q"] = { "<cmd>bd<CR>", "Close buffer" },
     ["Q"] = { "<cmd>qall<CR>", "Quit" },
-    ["tt"] = { "<cmd>ToggleTerm<CR>", "Terminal" },
 
     b = {
       name = "Buffer",
@@ -106,6 +105,16 @@ local function normal_keymap()
     },
 
     f = keymap_f,
+
+    g = {
+      name = "Git",
+      s = { "<cmd>Neogit<CR>", "Status" },
+      y = {
+        "<cmd>lua require'gitlinker'.get_buf_range_url('n', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
+        "Link",
+      },
+    },
+
     p = keymap_p,
 
     j = {
@@ -121,6 +130,12 @@ local function normal_keymap()
     ["5"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,1)<Cr>", "Command 1" },
     ["6"] = { "<Cmd>lua require('harpoon.term').sendCommand(1,2)<Cr>", "Command 2" },
 
+
+    t = {
+      name = "Terminal",
+      t = {"<cmd>ToggleTerm<CR>", "Toggle terminal"}
+    },
+
     z = {
       name = "System",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
@@ -134,20 +149,17 @@ local function normal_keymap()
       e = { "!!$SHELL<CR>", "Execute line" },
     },
 
-    g = {
-      name = "Git",
-      s = { "<cmd>Neogit<CR>", "Status" },
-      y = {
-        "<cmd>lua require'gitlinker'.get_buf_range_url('n', {action_callback = require'gitlinker.actions'.open_in_browser})<cr>",
-        "Link",
-      },
-    },
   }
   whichkey.register(keymap, opts)
 end
 
 local function visual_keymap()
   local keymap = {
+    f = {
+      name = "Filetype-independent formatting",
+      j = {"!jq<cr>", "JSON"}
+    },
+
     g = {
       name = "Git",
       y = {

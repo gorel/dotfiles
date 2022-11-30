@@ -432,6 +432,12 @@ function M.setup()
       disable = false,
     }
 
+    -- Copy to system clipboard
+    use {
+      "ojroques/nvim-osc52",
+      commit = "5e7efbc",
+    }
+
     -- Better increment/decrement
     use {
       "monaqa/dial.nvim",
@@ -574,12 +580,6 @@ function M.setup()
     -- Performance
     use { "lewis6991/impatient.nvim" }
     use { "dstein64/vim-startuptime", cmd = "StartupTime" }
-    -- use {
-    --   "nathom/filetype.nvim",
-    --   config = function()
-    --     require("config.filetype").setup()
-    --   end,
-    -- }
 
     -- Web
     use {
