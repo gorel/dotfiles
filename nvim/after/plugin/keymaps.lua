@@ -43,7 +43,9 @@ keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), default_opts)
 keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), default_opts)
 
 -- Copy to system clipboard with OSCYank
-keymap("v", "<leader>y", ":OSCYank<CR>", default_opts)
+vim.keymap.set("n", "<leader>c", require("osc52").copy_operator, {expr = true})
+vim.keymap.set("n", "<leader>cc", "<leader>c_", {remap = true})
+vim.keymap.set("x", "<leader>c", require("osc52").copy_visual)
 
 -- Navigate buffers with tab/shift-tab
 keymap("n", "<TAB>", ":bnext<CR>", default_opts)
