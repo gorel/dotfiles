@@ -51,3 +51,10 @@ vim.keymap.set("x", "<leader>c", require("osc52").copy_visual)
 -- Navigate buffers with tab/shift-tab
 keymap("n", "<TAB>", ":bnext<CR>", default_opts)
 keymap("n", "<S-TAB>", ":bprevious<CR>", default_opts)
+
+-- Folding
+--  Increase with zm, decrease with zr, fold all with zM, unfold all with zR
+--  Toggle fold with za, open fold with zo, close fold with zc
+--  If foldmethod is changed to manual, zf to fold (use as text object, e.g. zfaw, or in visual mode)
+-- Toggle fold
+vim.keymap.set({ "n", "v" }, "<LEADER><space>", "za", default_opts)

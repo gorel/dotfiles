@@ -26,6 +26,11 @@ opt.showmode = false -- Do not need to show the mode. We use the statusline inst
 opt.scrolloff = 999 -- Lines of context
 opt.joinspaces = false -- No double spaces with join after a dot
 
+-- Better folds
+opt.foldmethod = "indent" -- Lines with equal indent form a fold. (default: manual)
+opt.foldnestmax = 10 -- deepest fold is 10 levels (default: 20)
+opt.foldlevelstart = 10 -- set initial fold level to max (which prevents immediately nesting everything upon first fold) (default: -1)
+
 -- default formatting
 opt.shiftwidth = 2
 opt.tabstop = 2
@@ -57,13 +62,6 @@ opt.path:append "**"
 opt.wildignorecase = true
 opt.wildignore:append "**/node_modules/*"
 opt.wildignore:append "**/.git/*"
-
--- Treesitter based folding
-vim.cmd [[
-  set foldlevel=20
-  set foldmethod=expr
-  set foldexpr=nvim_treesitter#foldexpr()
-]]
 
 -- Use Lua filetype
 vim.cmd [[

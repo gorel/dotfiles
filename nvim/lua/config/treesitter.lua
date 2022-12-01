@@ -61,21 +61,29 @@ function M.setup()
         enable = true,
         set_jumps = true, -- whether to set jumps in the jumplist
         goto_next_start = {
-          ["]m"] = "@function.outer",
-          ["]]"] = "@class.outer",
-        },
-        goto_next_end = {
-          ["]M"] = "@function.outer",
-          ["]["] = "@class.outer",
-        },
-        goto_previous_start = {
-          ["[m"] = "@function.outer",
-          ["[["] = "@class.outer",
-        },
-        goto_previous_end = {
-          ["[M"] = "@function.outer",
-          ["[]"] = "@class.outer",
-        },
+            ["<leader>nf"] = "@function.outer",
+            ["<leader>nc"] = "@class.outer",
+            ["<leader>ni"] = "@conditional.outer",
+            ["<leader>nl"] = "@loop.outer",
+         },
+         goto_next_end = {
+            ["<leader>nF"] = "@function.outer",
+            ["<leader>nC"] = "@class.outer",
+            ["<leader>nI"] = "@conditional.outer",
+            ["<leader>nL"] = "@loop.outer",
+         },
+         goto_previous_start = {
+            ["<leader>pf"] = "@function.outer",
+            ["<leader>pc"] = "@class.outer",
+            ["<leader>pi"] = "@conditional.outer",
+            ["<leader>pl"] = "@loop.outer",
+         },
+         goto_previous_end = {
+            ["<leader>pF"] = "@function.outer",
+            ["<leader>pC"] = "@class.outer",
+            ["<leader>pI"] = "@conditional.outer",
+            ["<leader>pL"] = "@loop.outer",
+         },
       },
 
       lsp_interop = {
