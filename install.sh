@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/bin/bash
 
 echo "This will overwrite various .*rc files in your homedir."
 read -rp "Continue? [Y/n] " continue_var
