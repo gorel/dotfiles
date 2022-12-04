@@ -617,6 +617,12 @@ function M.setup()
       end,
     }
 
+    -- For discord lulz
+    use {
+      "andweeb/presence.nvim",
+      disable = true,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"

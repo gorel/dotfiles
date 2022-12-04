@@ -49,6 +49,7 @@ local sources = {
 
   -- hover
   b.hover.dictionary,
+  b.hover.printenv,
 }
 
 function M.setup(opts)

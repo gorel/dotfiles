@@ -10,7 +10,6 @@ local function keymappings(client, bufnr)
 
   -- Key mappings
   buf_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-  -- vim.keymap.set("n", "K", vim.lsp.buf.hover, { buffer = 0 })
 
   keymap("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
   keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
