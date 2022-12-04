@@ -7,21 +7,9 @@ if [[ "$continue_var" != "y" && "$continue_var" != "Y" ]]; then
 	exit 0
 fi
 
-read -rp "Should DEVSERVER env var be set? [Y/n] " devserver_env
-if [[ "$devserver_env" == "y" || "$devserver_env" == "Y" ]]; then
-	echo "Writing DEVSERVER=1 to .env_vars"
-	echo "DEVSERVER=1" >>"$HOME/.env_vars"
-fi
-
 if ! command -v cargo &>/dev/null; then
 	echo "Installing Cargo"
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-fi
-
-read -rp "Install zellij? [Y/n] " install_zellij
-if [[ "$install_zellij" == "y" || "$install_zellij" == "Y" ]]; then
-	echo "Installing zellij"
-	cargo +nightly install zellij
 fi
 
 if ! command -v nvim &>/dev/null; then
@@ -56,26 +44,9 @@ if ! command -v rg &>/dev/null; then
 	sudo apt-get install ripgrep
 fi
 
-if ! command -v diff-so-fancy &>/dev/null; then
-	echo "Installing diff-so-fancy"
-	sudo add-apt-repository ppa:aos1/diff-so-fancy
-	sudo apt update
-	sudo apt-get install -y diff-so-fancy
-fi
-
-if ! command -v flake8; then
-	echo "Installing flake8"
-	sudo apt-get install -y flake8
-fi
-
-if ! command -v shfmt; then
-	echo "Installing shfmt"
-	curl -sS https://webinstall.dev/shfmt | bash
-fi
-
-if ! command -v isort; then
-	echo "Installing isort"
-	python3 -m pip install isort
+if ! command -v delta &>/dev/null; then
+	echo "Installing delta"
+	cargo install delta
 fi
 
 cd "$(dirname "$0")" || exit 1
@@ -109,9 +80,6 @@ ln -nsf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
 echo "Link nvim files"
 mkdir -p "$HOME/.config/"
 ln -nsf "$PWD/nvim/" "$HOME/.config/nvim"
-
-echo "Link zellij config"
-ln -nsf "$PWD/zellij" "$HOME/.config/zellij"
 
 echo "Run PackerSync"
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'

@@ -1,5 +1,5 @@
 [user]
-	email = gorel@meta.com
+	email = lgore93@gmail.com
 	name = Logan Gore
 
 [alias]
@@ -23,10 +23,10 @@
 	default = current
 
 [core]
-	pager = diff-so-fancy | less --tabs=4 -RFX
+	pager = delta
 
 [interactive]
-	diffFilter = diff-so-fancy --patch
+	diffFilter = delta --color-only
 
 [color]
 	ui = true
@@ -45,3 +45,21 @@
 	old = red bold
 	new = green bold
 	whitespace = red reverse
+
+[delta]
+  features = line-numbers decorations
+  whitespace-error-style = 22 reverse
+  side-by-side = true
+
+[delta "decorations"]
+  commit-decoration-style = bold yellow box ul
+  file-style = bold yellow ul
+  file-decoration-style = none
+  hunk-header-decoration-style = yellow box
+
+[diff]
+  colorMoved = default
+
+[mergetool]
+  prompt = false
+
