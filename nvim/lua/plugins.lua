@@ -109,6 +109,14 @@ function M.setup()
       end,
       disable = true,
     }
+    use {
+      "akinsho/git-conflict.nvim",
+      commit = "0f87781ad92957a5354197baed9a6ace56332aa7",
+      config = function()
+        require("git-conflict").setup()
+      end,
+    }
+
 
     -- WhichKey
     use {
