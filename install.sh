@@ -1,5 +1,10 @@
 #!/bin/bash
 
+MAC=false
+if command -v brew &>/dev/null; then
+	MAC=true
+fi
+
 echo "This will overwrite various .*rc files in your homedir."
 read -rp "Continue? [Y/n] " continue_var
 if [[ "$continue_var" != "y" && "$continue_var" != "Y" ]]; then
@@ -14,9 +19,13 @@ fi
 
 if ! command -v nvim &>/dev/null; then
 	echo "Installing neovim"
-	sudo add-apt-repository ppa:neovim-ppa/unstable
-	sudo apt-get update
-	sudo apt-get install -y neovim
+	if ! $MAC; then
+		sudo add-apt-repository ppa:neovim-ppa/unstable
+		sudo apt-get update
+		sudo apt-get install -y neovim
+	else
+		brew -install --head neovim
+	fi
 fi
 
 if ! command -v starship &>/dev/null; then
@@ -26,7 +35,11 @@ fi
 
 if ! command -v j &>/dev/null; then
 	echo "Installing autojump"
-	sudo apt-get install -y autojump
+	if ! $MAC; then
+		sudo apt-get install -y autojump
+	else
+		brew install autojump
+	fi
 fi
 
 if ! command -v mcfly &>/dev/null; then
@@ -36,17 +49,25 @@ fi
 
 if ! command -v batcat &>/dev/null; then
 	echo "Installing bat"
-	sudo apt-get install -y bat
+	if ! $MAC; then
+		sudo apt-get install -y bat
+	else
+		brew install bat
+	fi
 fi
 
 if ! command -v rg &>/dev/null; then
 	echo "Installing ripgrep"
-	sudo apt-get install ripgrep
+	if ! $MAC; then
+		sudo apt-get install ripgrep
+	else
+		brew install ripgrep
+	fi
 fi
 
 if ! command -v delta &>/dev/null; then
 	echo "Installing delta"
-	cargo install delta
+	cargo install git-delta
 fi
 
 cd "$(dirname "$0")" || exit 1

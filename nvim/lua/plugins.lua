@@ -6,6 +6,8 @@ function M.setup()
 
   -- packer.nvim configuration
   local conf = {
+    -- without this, macbook hangs on PackerSync
+    max_jobs = 10,
     profile = {
       enable = true,
       threshold = 0, -- the amount in ms that a plugins load time must be over for it to be included in the profile
