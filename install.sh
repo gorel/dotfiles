@@ -109,6 +109,10 @@ echo "Link starship config"
 mkdir -p "$HOME/.config/"
 ln -nsf "$PWD/starship.toml" "$HOME/.config/starship.toml"
 
+echo "Link wezterm files"
+mkdir -p "$HOME/.config/"
+ln -nsf "$PWD/wezterm/" "$HOME/.config/wezterm"
+
 echo "Link git_env_password.sh script"
 mkdir -p "$HOME/bin/"
 ln -nsf "$PWD/git_env_password.sh" "$HOME/bin/git_env_password.sh"
