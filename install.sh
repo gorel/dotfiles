@@ -113,6 +113,10 @@ echo "Link wezterm files"
 mkdir -p "$HOME/.config/"
 ln -nsf "$PWD/wezterm/" "$HOME/.config/wezterm"
 
+echo "Link global_requirements.txt"
+mkdir -p "$HOME/.config/"
+ln -nsf "$PWD/global_requirements.txt" "$HOME/.config/global_requirements.txt"
+
 echo "Link git_env_password.sh script"
 mkdir -p "$HOME/bin/"
 ln -nsf "$PWD/git_env_password.sh" "$HOME/bin/git_env_password.sh"

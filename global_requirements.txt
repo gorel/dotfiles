@@ -1,0 +1,6 @@
+black
+colorama
+flake8
+gitpython
+mypy
+pyright

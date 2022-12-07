@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # History
 export HISTORY_IGNORE="&:ls:[bf]g:exit:k:q"
 
@@ -98,15 +100,19 @@ source "$HOME/.cargo/env"
 ##################################
 export PYTHONWARNINGS="ignore"
 
-############
-# FB Stuff #
-############
-function pwt() {
-  eval "$* 2>&1" | pastry --title "$*";
+#############
+# Functions #
+#############
+function venv() {
+  local venv_dir="${1:-venv}"
+  python -m venv $venv_dir
+  $venv_dir/bin/pip install --upgrade pip
+  $venv_dir/bin/pip install -r "$HOME/.config/global_requirements.txt"
 }
 
-function pwto() {
-  eval "$* 2>&1" | tee >(pastry --title "$*");
+function activate() { 
+  local venv_dir="${1:-venv}"
+  source $venv_dir/bin/activate
 }
 
 ##########
