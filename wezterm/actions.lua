@@ -5,12 +5,7 @@ local os = require "os"
 
 local actions = {}
 
-local nvim
-if wezterm.hostname() == "jrodal-mbp" then
-   nvim = "/usr/local/bin/nvim"
-else
-   nvim = "nvim"
-end
+local nvim = "nvim"
 
 actions.open_url_action = wezterm.action.QuickSelectArgs {
    label = "open url",

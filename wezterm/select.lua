@@ -2,7 +2,6 @@ local select = {}
 
 local url_regex = "\\b\\w+://(?:[\\w.-]+)\\.[a-z]{2,15}\\S*\\b"
 local ip_addr_regex = "\\b\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\.\\d{1,3}\\b"
-local diff_paste_task_regex = "\\b([dDpPtT]\\d+)\\b"
 
 -- quick select mode (CTRL-SHIFT-SPACE)
 select.quick_select_patterns = {
@@ -10,8 +9,6 @@ select.quick_select_patterns = {
    url_regex,
    -- match ip addresses
    ip_addr_regex,
-   -- match diffs, pastes, and tasks
-   diff_paste_task_regex,
 }
 
 select.hyperlink_rules = {
@@ -24,11 +21,6 @@ select.hyperlink_rules = {
    {
       regex = ip_addr_regex,
       format = "$0",
-   },
-   -- make diffs, pastes, and tasks clickable
-   {
-      regex = diff_paste_task_regex,
-      format = "https://fburl.com/b/$1",
    },
 }
 
