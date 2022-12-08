@@ -65,7 +65,7 @@
   prompt = false
 
 [include]
-  path = ~/.git-secrets
+  path = ~/.config/git-profiles/stytch
 
-[includeIf "gitdir:~/stytch/"]
-  path = ~/.git-profiles/stytch
+[includeIf "gitdir:~/github/personal/"]
+  path = ~/.config/git-profiles/personal

@@ -1,0 +1,10 @@
+[user]
+  name = Logan Gore
+  email = lgore@stytch.com
+
+[credential]
+  helper = store
+	username = logan-stytch
+
+[url "https://logan-stytch@github.com/stytchauth"]
+	insteadOf = https://github.com/stytchauth

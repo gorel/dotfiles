@@ -1,0 +1,7 @@
+[user]
+  name = Logan Gore
+  email = lgore93@gmail.com
+
+[credential]
+  helper = store
+	username = gorel

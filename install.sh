@@ -12,6 +12,14 @@ if [[ "$continue_var" != "y" && "$continue_var" != "Y" ]]; then
 	exit 0
 fi
 
+mkdir -p "$HOME/.config"
+
+echo "Link .gitconfig and git-profiles"
+mkdir -p ".config"
+ln -nsf "$PWD/git/config" "$HOME/.gitconfig"
+ln -nsf "$PWD/git/profiles" "$HOME/.config/git-profiles"
+ln -nsf "$HOME/.config/git-profiles/personal" "$HOME/.git-profile"
+
 if ! command -v cargo &>/dev/null; then
 	echo "Installing Cargo"
 	curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
@@ -71,55 +79,36 @@ if ! command -v delta &>/dev/null; then
 fi
 
 cd "$(dirname "$0")" || exit 1
-echo "Link .bashrc and .zshrc"
-ln -nsf "$PWD/.bashrc" "$HOME/.bashrc"
-ln -nsf "$PWD/.zshrc" "$HOME/.zshrc"
+files=(
+	".aliases"
+	".bashrc"
+	".dircolors"
+	".hgrc"
+	".inputrc"
+	".tmux.conf"
+	".vimrc"
+	".zshrc"
+)
+for f in "${files[@]}"; do
+	ln -nsf "$PWD/$f" "$HOME/$f"
+done
+
+config_files=(
+	"global_requirements.txt"
+	"nvim"
+	"starship.toml"
+	"wezterm"
+)
+for f in "${config_files[@]}"; do
+	ln -nsf "$PWD/$f" "$HOME/.config/$f"
+done
+
 if [ ! -d "$HOME/.zgen" ]; then
 	echo "Cloning zgen"
 	git clone "https://github.com/tarjoilija/zgen.git" "${HOME}/.zgen"
 fi
-ln -nsf "$PWD/.aliases" "$HOME/.aliases"
-
-echo "Link .dircolors"
-ln -nsf "$PWD/.dircolors" "$HOME/.dircolors"
-
-echo "Link .gitconfig and git-profiles"
-ln -nsf "$PWD/.gitconfig" "$HOME/.gitconfig"
-ln -nsf "$PWD/git-profiles" "$HOME/.git-profiles"
-
-echo "Link .hgrc"
-ln -nsf "$PWD/.hgrc" "$HOME/.hgrc"
-
-echo "Link .inputrc"
-ln -nsf "$PWD/.inputrc" "$HOME/.inputrc"
-
-echo "Link .vimrc"
-ln -nsf "$PWD/.vimrc" "$HOME/.vimrc"
-
-echo "Link .tmux.conf"
-ln -nsf "$PWD/.tmux.conf" "$HOME/.tmux.conf"
-
-echo "Link nvim files"
-mkdir -p "$HOME/.config/"
-ln -nsf "$PWD/nvim/" "$HOME/.config/nvim"
 
 echo "Run PackerSync"
 nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
-echo "Link starship config"
-mkdir -p "$HOME/.config/"
-ln -nsf "$PWD/starship.toml" "$HOME/.config/starship.toml"
-
-echo "Link wezterm files"
-mkdir -p "$HOME/.config/"
-ln -nsf "$PWD/wezterm/" "$HOME/.config/wezterm"
-
-echo "Link global_requirements.txt"
-mkdir -p "$HOME/.config/"
-ln -nsf "$PWD/global_requirements.txt" "$HOME/.config/global_requirements.txt"
-
-echo "Link starship config"
-mkdir -p "$HOME/.config/"
-ln -nsf "$PWD/starship.toml" "$HOME/.config/starship.toml"
 
 echo "All done! You should run 'source ~/.zshrc' now to get the new changes."
