@@ -10,9 +10,9 @@ export GIT_EDITOR="nvim"
 export MCFLY_KEY_SCHEME=vim
 
 # Locale exports because some stuff is breaking on devserver?
-export LANG="en_US.UTF8"
-export LC_ALL="en_US.UTF8"
-export LC_CTYPE="en_US.UTF8"
+export LANG="en_US.UTF-8"
+export LC_ALL="en_US.UTF-8"
+export LC_CTYPE="en_US.UTF-8"
 
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
