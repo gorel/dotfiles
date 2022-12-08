@@ -64,3 +64,8 @@
 [mergetool]
   prompt = false
 
+[include]
+  path = ~/.git-secrets
+
+[includeIf "gitdir:~/stytch/"]
+  path = ~/.git-profiles/stytch

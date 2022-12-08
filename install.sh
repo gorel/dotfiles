@@ -83,8 +83,9 @@ ln -nsf "$PWD/.aliases" "$HOME/.aliases"
 echo "Link .dircolors"
 ln -nsf "$PWD/.dircolors" "$HOME/.dircolors"
 
-echo "Link .gitconfig"
+echo "Link .gitconfig and git-profiles"
 ln -nsf "$PWD/.gitconfig" "$HOME/.gitconfig"
+ln -nsf "$PWD/git-profiles" "$HOME/.git-profiles"
 
 echo "Link .hgrc"
 ln -nsf "$PWD/.hgrc" "$HOME/.hgrc"
@@ -92,7 +93,7 @@ ln -nsf "$PWD/.hgrc" "$HOME/.hgrc"
 echo "Link .inputrc"
 ln -nsf "$PWD/.inputrc" "$HOME/.inputrc"
 
-echo "Link .vimrc and neovim init.vim"
+echo "Link .vimrc"
 ln -nsf "$PWD/.vimrc" "$HOME/.vimrc"
 
 echo "Link .tmux.conf"
