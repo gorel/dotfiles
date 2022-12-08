@@ -7,7 +7,6 @@ setopt rm_star_silent
 export EDITOR="nvim"
 export VISUAL="nvim"
 export GIT_EDITOR="nvim"
-export GIT_ASKPASS="git_env_password.sh"
 export MCFLY_KEY_SCHEME=vim
 
 # Locale exports because some stuff is breaking on devserver?
