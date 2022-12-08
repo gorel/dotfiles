@@ -30,20 +30,14 @@ killport(){
   lsof -ti:$1 | xargs kill -9
 }
 
-####################
-# Private ENV vars #
-####################
+################################
+# Private ENV vars and aliases #
+################################
 touch "$HOME/.env_vars"
 source "$HOME/.env_vars"
-
-# Alias definitions.
 if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
 fi
-
-# if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-#   exec tmux
-# fi
 
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
@@ -67,13 +61,6 @@ if ! zgen saved; then
   # generate the init script from plugins above
   zgen save
 fi
-
-###############################
-# Useful when mosh gets stuck #
-###############################
-killmosh(){
-  kill $(ps --no-headers --sort=start_time -C mosh-server -o pid | head -n -1)
-}
 
 ##############
 # Enable vim #
