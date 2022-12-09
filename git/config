@@ -60,6 +60,13 @@
 
 [diff]
   colorMoved = default
+  tool = nvimdiff
+
+[difftool]
+  prompt = true
+
+[difftool "nvimdiff"]
+  cmd = "nvim -d \"$LOCAL\" \"$REMOTE\""
 
 [mergetool]
   prompt = false

@@ -60,7 +60,7 @@ style = "bold green"
 format = "$symbol[${ram}( | ${swap})]($style) "
 threshold = 70
 style = "bold dimmed white"
-disabled = false
+disabled = true
 
 [package]
 disabled = true
