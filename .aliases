@@ -1,76 +1,50 @@
-alias ..="cd .."
-alias ...="cd ../.."
 alias ....="cd ../../.."
-alias b="cd -"
-alias ls="ls --color=auto"
-alias ll="ls -l"
-alias lo="ls -o"
-alias lh="ls -lh"
-alias la="ls -la"
-alias sl="ls"
-alias l="ls"
-alias s="ls"
-alias hist="history"
-alias mkae="make"
+alias ...="cd ../.."
+alias ..="cd .."
+alias T="tee /dev/tty"
 alias apt-get="sudo apt-get"
+alias b="cd -"
 alias c="clear"
 alias cc='echo -q "\n\n\n\n\n\033[0;31mCLEAR SCREEN\033[0m\n\n\n\n\n"'
-alias grep='grep --color=auto'
-alias egrep='egrep --color=auto'
-alias fgrep='fgrep --color=auto'
-alias vim="nvim"
-alias vi="nvim"
+alias copy_to_clipboard='xclip -selection clipboard'
 alias edit="nvim"
-alias python3="python3.10"
-alias python="python3"
-alias py="python3"
+alias egrep='egrep --color=auto'
+alias fb="et fb:8080"
+alias fgrep='fgrep --color=auto'
+alias fuck='eval "sudo $(fc -ln -1)"'
+alias g="git"
+alias grep='grep --color=auto'
+alias h="hg"
+alias hc="hg ci -m"
+alias hist="history"
+alias ibrew="arch -x86_64 /usr/local/homebrew/bin/brew"
+alias l="ls"
+alias la="ls -la"
+alias lh="ls -lh"
+alias ll="ls -l"
+alias lo="ls -o"
+alias ls="ls --color=auto"
+alias mkae="make"
+alias paste_from_clipboard='xclip -o -selection clipboard'
 alias py2="python2"
 alias py3="python3"
-alias g="git"
-alias h="hg"
-alias tt="tee /dev/tty"
-alias T="tee /dev/tty"
-alias tmux="TERM=xterm-256color tmux -2"
+alias py="python3"
+alias python3="python3.10"
+alias python="python3"
+alias s="ls"
+alias sl="ls"
+alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
 alias ta="tmux attach"
 alias td="tmux detach"
 alias tl="tmux ls"
-alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'
-alias hc="hg ci -m"
-alias fb="et fb:8080"
-alias copy_to_clipboard='xclip -selection clipboard'
-alias paste_from_clipboard='xclip -o -selection clipboard'
-alias fuck='eval "sudo $(fc -ln -1)"'
-alias hgo='cat <(hg status --no-status --change .) <(hg status --no-status) | uniq | xargs nvim'
+alias tmux="TERM=xterm-256color tmux -2"
+alias tt="tee /dev/tty"
+alias vi="nvim"
+alias vim="nvim"
 
-# ensure that ~/.env_vars was loaded first so this works
-alias ght="echo $GITHUB_TOKEN"
 if command -v batcat &> /dev/null; then
   alias bat="batcat"
   alias cat="batcat"
 elif command -v bat &> /dev/null; then
   alias cat="bat"
-fi
-
-if [ -n "$DEVSERVER" ]; then
-  alias adp="jf s -n"
-  alias al="arc lint"
-  alias af="arc feature"
-  alias apl="arc pull --latest"
-  alias afc="arc feature --cleanup"
-  alias ham="hg amend"
-  alias had="ham && jf s"
-  alias hads="ham && jf s --draft"
-  alias hdr="hg diff -r .^"
-
-  # proxy commands
-  alias proxy_nvim='env $(fwdproxy-config --format=sh curl) nvim'
-
-  # cd shortcuts
-  alias CF="cd ~/configerator"
-  alias FBC="cd ~/fbcode"
-  alias LIFT="cd ~/dataswarm/tasks/adsatlas/adstudy"
-  alias PL="cd ~/fbcode/measurement/private_lift/"
-  alias PCS="cd ~/fbcode/fbpcs/"
-  alias PCF="cd ~/fbcode/fbpcf/"
-  alias PCP="cd ~/fbcode/measurement/private_measurement/pcp/"
 fi
