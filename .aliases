@@ -26,11 +26,6 @@ alias lo="ls -o"
 alias ls="ls --color=auto"
 alias mkae="make"
 alias paste_from_clipboard='xclip -o -selection clipboard'
-alias py2="python2"
-alias py3="python3"
-alias py="python3"
-alias python3="python3.10"
-alias python="python3"
 alias s="ls"
 alias sl="ls"
 alias stripcolors='sed "s/\x1B\[\([0-9]\{1,2\}\(;[0-9]\{1,2\}\)\?\)\?[mGK]//g"'

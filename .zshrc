@@ -86,6 +86,7 @@ source "$HOME/.cargo/env"
 # Hide stupid warnings in Python #
 ##################################
 export PYTHONWARNINGS="ignore"
+export PYTHONDONTWRITEBYTECODE=1
 
 #############
 # Functions #
@@ -100,6 +101,10 @@ function venv() {
 function activate() { 
   local venv_dir="${1:-venv}"
   source $venv_dir/bin/activate
+}
+
+function rename_wezterm_title {
+  echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
 }
 
 ##########
