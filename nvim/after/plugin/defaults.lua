@@ -96,10 +96,10 @@ vim.cmd [[
 ]]
 
 -- set up my colorscheme
-vim.g.tokyonight_style = "storm"
-vim.g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
+g.tokyonight_style = "storm"
+g.tokyonight_sidebars = { "qf", "vista_kind", "terminal", "packer" }
 -- Change the "hint" color to the "orange" color, and make the "error" color bright red
-vim.g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
+g.tokyonight_colors = { hint = "orange", error = "#ff0000" }
 vim.cmd [[
 
   silent! colorscheme tokyonight

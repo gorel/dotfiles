@@ -92,19 +92,42 @@ export PYTHONDONTWRITEBYTECODE=1
 # Functions #
 #############
 function venv() {
-  local venv_dir="${1:-venv}"
-  python -m venv $venv_dir
+  local venv_dir="${1:-.venv}"
+  python3 -m venv $venv_dir
   $venv_dir/bin/pip install --upgrade pip
   $venv_dir/bin/pip install -r "$HOME/.config/global_requirements.txt"
+  if [[ -f "requirements.txt" ]]; then
+    $venv_dir/bin/pip install -r requirements.txt
+  fi
 }
 
 function activate() { 
-  local venv_dir="${1:-venv}"
+  local venv_dir="${1:-.venv}"
   source $venv_dir/bin/activate
 }
 
-function rename_wezterm_title {
+function rename-wezterm-title {
   echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
+}
+
+function okteto-up { 
+  # "Why sawtooth instead of using a different sed delimiter?"
+  # It wasn't working and I spent too long debugging to care.
+  local match='^  - \$HOME\/\.gitconfig:\/root\/\.gitconfig:400$'
+  # We escape the spaces here since sed needs to know the leading spaces are important
+  local creds='\  - \$HOME\/.git-credentials:\/root\/.git-credentials:400'
+  local profile='\  - \$HOME\/.config\/git-profiles\/stytch:\/root\/.config\/git-profiles\/stytch:400'
+  local additions="${creds}\n${profile}"
+
+  local tmppath=$(realpath "$1" | sed "s%/%__%g")
+  sed "/${match}/a ${additions}" "$1" > "${tmppath}"
+  okteto up -f "${tmppath}"
+}
+
+function okteto-down {
+  local tmppath=$(realpath "$1" | sed "s%/%__%g")
+  okteto down -f "${tmppath}"
+  rm -f "${tmppath}"
 }
 
 ##########

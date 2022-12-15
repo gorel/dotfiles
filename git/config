@@ -4,7 +4,7 @@
 
 [alias]
   a = add
-  b = branch
+  b = branch -vv
   ba = branch -a
   ci = commit
   co = checkout
@@ -22,6 +22,7 @@
 
 [push]
   default = current
+  autoSetupRemote = true
 
 [pull]
 	rebase = true

@@ -118,6 +118,11 @@ function M.setup()
         require("git-conflict").setup()
       end,
     }
+    use {
+      "f-person/git-blame.nvim",
+      commit = "d3afb1c57918720548effb42edec530232436378",
+      disable = true,
+    }
 
 
     -- WhichKey
@@ -169,7 +174,7 @@ function M.setup()
     use {
       "ggandor/leap.nvim",
       config = function()
-        require("leap").setup {}
+        require("leap").add_default_mappings()
       end,
       requires = "tpope/vim-repeat",
     }
@@ -207,7 +212,7 @@ function M.setup()
       config = function()
         require("config.neoscroll").setup()
       end,
-      disable = true,
+      disable = false,
     }
 
     -- Code documentation
