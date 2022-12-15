@@ -32,7 +32,7 @@ if ! command -v nvim &>/dev/null; then
 		sudo apt-get update
 		sudo apt-get install -y neovim
 	else
-		brew -install --head neovim
+		brew install --head neovim
 	fi
 fi
 

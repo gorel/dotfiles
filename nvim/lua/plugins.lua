@@ -463,6 +463,10 @@ function M.setup()
     }
 
     -- LSP
+    use {
+      "jose-elias-alvarez/null-ls.nvim",
+      commit = "a678972",
+    }
     if PLUGINS.nvim_cmp.enabled then
       use {
         "neovim/nvim-lspconfig",

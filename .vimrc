@@ -8,33 +8,33 @@ endif
 
 call plug#begin()
 " Easily switch between .h and .c/.cpp
-Plug 'vim-scripts/a.vim'
+" Plug 'vim-scripts/a.vim'
 
 " NERDTree
-Plug 'scrooloose/nerdtree'
+" Plug 'scrooloose/nerdtree'
 
 " Git integration
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+" Plug 'tpope/vim-fugitive'
+" Plug 'airblade/vim-gitgutter'
 
 " Linting
-Plug 'neomake/neomake'
-Plug 'w0rp/ale'
+" Plug 'neomake/neomake'
+" Plug 'w0rp/ale'
 
 " Syntax
-Plug 'sheerun/vim-polyglot'
-Plug 'matthewbdaly/vim-filetype-settings'
-Plug 'rhysd/vim-clang-format'
-Plug 'psf/black'
+" Plug 'sheerun/vim-polyglot'
+" Plug 'matthewbdaly/vim-filetype-settings'
+" Plug 'rhysd/vim-clang-format'
+" Plug 'psf/black'
 
 " Heuristic-based shiftwidth and expandtab
-Plug 'tpope/vim-sleuth'
+" Plug 'tpope/vim-sleuth'
 
 " Better matching for HTML tags
-Plug 'tmhedberg/matchit'
+" Plug 'tmhedberg/matchit'
 
 " Show where indents are with a small vertical line
-Plug 'Yggdroot/indentLine'
+" Plug 'Yggdroot/indentLine'
 
 " Theme
 Plug 'nanotech/jellybeans.vim' , {'as': 'jellybeans'}

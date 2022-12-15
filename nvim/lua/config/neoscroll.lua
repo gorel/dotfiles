@@ -14,8 +14,8 @@ function M.setup()
     post_hook = nil, -- Function to run after the scrolling animation ends
   }
   local t = {}
-  t["K"] = {'scroll', {'-vim.wo.scroll', 'true', '250'}}
-  t["J"] = {'scroll', {'vim.wo.scroll', 'true', '250'}}
+  t["<C-k>"] = {'scroll', {'-vim.wo.scroll', 'true', '250'}}
+  t["<C-j>"] = {'scroll', {'vim.wo.scroll', 'true', '250'}}
   require("neoscroll.config").set_mappings(t)
 end
 
