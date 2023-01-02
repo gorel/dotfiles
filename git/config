@@ -15,6 +15,7 @@
   p = pull
   s = status
   sl = smartlog
+  sw = switch
 
 [credential]
   helper = store
