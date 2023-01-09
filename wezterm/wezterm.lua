@@ -16,7 +16,19 @@ wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_wid
   }
 end)
 
+-- see https://wezfurlong.org/wezterm/config/lua/wezterm/target_triple.html for values
+local is_windows = wezterm.target_triple == "x86_64-pc-windows-msvc"
+local wsl_domains = wezterm.default_wsl_domains()
+
+for _, dom in ipairs(wsl_domains) do
+    dom.default_cwd = "~"
+end
+
 return {
+   ----------- WSL stuff -----------
+    wsl_domains = wsl_domains,
+    default_domain = is_windows and "WSL:Ubuntu-22.04" or nil,
+    default_prog = is_windows and { "wsl.exe" } or nil,
    ----------- Aesthetics ----------
    color_scheme = aesthetics.color_scheme,
    window_background_opacity = aesthetics.window_background_opacity,
@@ -24,8 +36,8 @@ return {
    font_size = aesthetics.font_size,
    window_decorations = aesthetics.window_decorations,
    ----------- Bindings ----------
-   keys = bindings.keys,
-   key_tables = bindings.key_tables,
+   -- keys = bindings.keys,
+   -- key_tables = bindings.key_tables,
    mouse_bindings = bindings.mouse,
    ----------- Selection ----------
    quick_select_patterns = select.quick_select_patterns,
@@ -34,3 +46,4 @@ return {
    -- prevents terminal hanging when exiting with ctrl-d
    exit_behavior = "Close",
 }
+
