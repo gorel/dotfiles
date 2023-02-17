@@ -132,6 +132,11 @@ function okteto-down {
   rm -f "${tmppath}"
 }
 
+function squash-all { 
+  git reset --soft $(git merge-base main HEAD)
+  git commit -m "$1"
+}
+
 ##########
 # prompt #
 ##########

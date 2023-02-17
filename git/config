@@ -16,6 +16,7 @@
   s = status
   sl = smartlog
   sw = switch
+  enforce = push --force-with-lease
 
 [credential]
   helper = store

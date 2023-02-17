@@ -105,6 +105,21 @@ vim.cmd [[
   silent! colorscheme tokyonight
 ]]
 
+-- Linear tasks
+vim.cmd [[
+  function FileTodo(...)
+      let l:team_key = input("Team shortname (eg BACK or TECH): ")
+      let l:task_text = input("Task text: ")
+      let l:linear_cmd = 'create-linear-issue.sh ' . shellescape(l:team_key) . ' ' . shellescape(l:task_text)
+      let l:ticket_id_raw = system(l:linear_cmd)
+      let l:ticket_id = substitute(l:ticket_id_raw, '[\r\n]*$', '', '')
+      let l:comment = substitute(&l:commentstring, '%s', l:ticket_id . ': ' . l:task_text, '')
+      execute 'normal O'.l:comment 
+  endfunction
+  command! -range -nargs=? FileTodo call FileTodo(<line1>, <line2>, <f-args>)
+]]
+vim.keymap.set({ "n", "v" }, "<leader>ft", ":FileTodo<CR>", { noremap = true, silent = true })
+
 -- Close vim if the last buffer is deleted
 vim.cmd [[
 function! CountListedBuffers()
