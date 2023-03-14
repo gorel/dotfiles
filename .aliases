@@ -39,6 +39,7 @@ alias tt="tee /dev/tty"
 alias vi="nvim"
 alias vim="nvim"
 alias kns="kubens"
+alias kpods="kubectl get pods"
 
 if command -v gsed &>/dev/null; then
 	alias sed="gsed"

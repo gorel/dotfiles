@@ -1,7 +1,9 @@
 local M = {}
 
 local servers = {
-  gopls = {},
+  gopls = {
+    gofumpt = true,
+  },
   html = {},
   jsonls = {
     settings = {
