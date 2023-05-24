@@ -27,7 +27,7 @@ function M.setup(servers, options)
       "rustfmt",
       "shellcheck",
       "shfmt",
-      "stylua", 
+      "stylua",
     },
     auto_update = false,
     run_on_start = true,
@@ -49,9 +49,10 @@ function M.setup(servers, options)
     ["jdtls"] = function()
       -- print "jdtls is handled by nvim-jdtls"
     end,
-    ["sumneko_lua"] = function()
-      local opts = vim.tbl_deep_extend("force", options, servers["sumneko_lua"] or {})
-      lspconfig.sumneko_lua.setup(require("lua-dev").setup { opts })
+    ["lua_ls"] = function()
+      local opts = vim.tbl_deep_extend("force", options, servers["lua_ls"] or {})
+      require("neodev").setup({ opts })
+      lspconfig.lua_ls.setup { opts }
     end,
     ["rust_analyzer"] = function()
       local opts = vim.tbl_deep_extend("force", options, servers["rust_analyzer"] or {})
