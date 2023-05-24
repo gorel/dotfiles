@@ -52,7 +52,15 @@ function M.setup(servers, options)
     ["lua_ls"] = function()
       local opts = vim.tbl_deep_extend("force", options, servers["lua_ls"] or {})
       require("neodev").setup({ opts })
-      lspconfig.lua_ls.setup { opts }
+      lspconfig.lua_ls.setup {
+        settings = {
+          Lua = {
+            workspace = {
+              checkThirdParty = false,
+            }
+          }
+        }
+      }
     end,
     ["rust_analyzer"] = function()
       local opts = vim.tbl_deep_extend("force", options, servers["rust_analyzer"] or {})
