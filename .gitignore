@@ -1,3 +1,4 @@
 nvim-linux64/
 nvim-linux64.tar.gz
 nvim/after/plugin/defaults_fb.lua
+bin/direnv
