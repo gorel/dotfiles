@@ -464,6 +464,10 @@ function M.setup()
 
     -- LSP
     use {
+      "jose-elias-alvarez/typescript.nvim"
+    }
+
+    use {
       "jose-elias-alvarez/null-ls.nvim",
       commit = "a678972",
     }
@@ -493,6 +497,7 @@ function M.setup()
           "folke/neodev.nvim",
           "RRethy/vim-illuminate",
           "jose-elias-alvarez/null-ls.nvim",
+          "jose-elias-alvarez/typescript.nvim",
           {
             "j-hui/fidget.nvim",
             config = function()
