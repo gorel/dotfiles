@@ -500,6 +500,7 @@ function M.setup()
           "jose-elias-alvarez/typescript.nvim",
           {
             "j-hui/fidget.nvim",
+            tag = "legacy",
             config = function()
               require("fidget").setup {}
             end,
@@ -538,6 +539,7 @@ function M.setup()
           "jose-elias-alvarez/null-ls.nvim",
           {
             "j-hui/fidget.nvim",
+            tag = "legacy",
             config = function()
               require("fidget").setup {}
             end,
@@ -653,6 +655,7 @@ function M.setup()
       config = function()
         require("config.codeium").setup()
       end,
+      disable = true,
     }
 
     -- Bootstrap Neovim
