@@ -647,6 +647,14 @@ function M.setup()
       disable = true,
     }
 
+    -- AI code completion
+    use {
+      'Exafunction/codeium.vim',
+      config = function()
+        require("config.codeium").setup()
+      end,
+    }
+
     -- Bootstrap Neovim
     if packer_bootstrap then
       print "Restart Neovim required after installation!"
