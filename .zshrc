@@ -113,26 +113,6 @@ function rename-wezterm-title {
   echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
 }
 
-function okteto-up { 
-  # "Why sawtooth instead of using a different sed delimiter?"
-  # It wasn't working and I spent too long debugging to care.
-  local match='^  - \$HOME\/\.gitconfig:\/root\/\.gitconfig:400$'
-  # We escape the spaces here since sed needs to know the leading spaces are important
-  local creds='\  - \$HOME\/.git-credentials:\/root\/.git-credentials:400'
-  local profile='\  - \$HOME\/.config\/git-profiles\/stytch:\/root\/.config\/git-profiles\/stytch:400'
-  local additions="${creds}\n${profile}"
-
-  local tmppath=$(realpath "$1" | sed "s%/%__%g")
-  sed "/${match}/a ${additions}" "$1" > "${tmppath}"
-  okteto up -f "${tmppath}"
-}
-
-function okteto-down {
-  local tmppath=$(realpath "$1" | sed "s%/%__%g")
-  okteto down -f "${tmppath}"
-  rm -f "${tmppath}"
-}
-
 function squash-all { 
   git reset --soft $(git merge-base main HEAD)
   git commit -m "$1"
@@ -166,3 +146,4 @@ eval "$(direnv hook zsh)"
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+export AWS_VAULT_PROMPT=ykman

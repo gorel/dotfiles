@@ -4,7 +4,7 @@ local aesthetics = {}
 
 -- not actually using this right now since default looks better
 aesthetics.color_scheme = "tokyonight"
-aesthetics.window_background_opacity = 0.85
+aesthetics.window_background_opacity = 1.00
 aesthetics.hide_tab_bar_if_only_one_tab = true
 aesthetics.font_size = 16
 

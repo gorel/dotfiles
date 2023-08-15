@@ -38,8 +38,6 @@ alias tmux="TERM=xterm-256color tmux -2"
 alias tt="tee /dev/tty"
 alias vi="nvim"
 alias vim="nvim"
-alias kns="kubens"
-alias kpods="kubectl get pods"
 
 if command -v gsed &>/dev/null; then
 	alias sed="gsed"
