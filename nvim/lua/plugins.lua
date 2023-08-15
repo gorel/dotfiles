@@ -447,12 +447,6 @@ function M.setup()
       disable = false,
     }
 
-    -- Copy to system clipboard
-    use {
-      "ojroques/nvim-osc52",
-      commit = "5e7efbc",
-    }
-
     -- Better increment/decrement
     use {
       "monaqa/dial.nvim",
@@ -656,6 +650,12 @@ function M.setup()
         require("config.codeium").setup()
       end,
       disable = true,
+    }
+    use {
+      "github/copilot.vim",
+      config = function()
+        require("config.copilot").setup()
+      end,
     }
 
     -- Bootstrap Neovim
