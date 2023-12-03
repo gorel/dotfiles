@@ -587,6 +587,9 @@ function M.setup()
       end,
     }
 
+    -- Nim
+    use { "https://github.com/alaviss/nim.nvim" }
+
     -- Terminal
     use {
       "akinsho/toggleterm.nvim",
