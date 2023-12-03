@@ -52,3 +52,8 @@ keymap("n", "<S-TAB>", ":bprevious<CR>", default_opts)
 --  If foldmethod is changed to manual, zf to fold (use as text object, e.g. zfaw, or in visual mode)
 -- Toggle fold
 vim.keymap.set({ "n", "v" }, "<LEADER><space>", "za", default_opts)
+
+-- Copy names
+keymap("n", ";cc", ':let @+=expand("%")<CR>', default_opts)
+keymap("n", ";cl", ':let @+=join([expand("%"), line(".")], ":")<CR>', default_opts)
+keymap("n", ";cp", ':let @+=expand("%:p")<CR>', default_opts)

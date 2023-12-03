@@ -83,6 +83,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/dotbin/:$PATH"
+export PATH="$HOME/.nimble/bin:$PATH"
 source "$HOME/.cargo/env"
 
 ##################################
@@ -116,6 +117,10 @@ function rename-wezterm-title {
 function squash-all { 
   git reset --soft $(git merge-base main HEAD)
   git commit -m "$1"
+}
+
+function colorcode {
+  sed ''/PASS/s//$(printf "\033[32mPASS\033[0m")/'' | sed ''/FAIL/s//$(printf "\033[31mFAIL\033[0m")/''
 }
 
 ##########

@@ -38,6 +38,7 @@ alias tmux="TERM=xterm-256color tmux -2"
 alias tt="tee /dev/tty"
 alias vi="nvim"
 alias vim="nvim"
+alias gpm="git checkout main && git pull"
 
 if command -v gsed &>/dev/null; then
 	alias sed="gsed"
@@ -52,6 +53,10 @@ fi
 
 if command -v lazygit &>/dev/null; then
 	alias lg="lazygit"
+fi
+
+if command -v gotestsum &>/dev/null; then
+	alias gt="gotestsum"
 fi
 
 if [ -f "$HOME/.stytch-aliases" ]; then
