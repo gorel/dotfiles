@@ -106,13 +106,10 @@ function M.setup()
     autotag = {
       enable = true,
     },
-
-    -- context_commentstring
-    context_commentstring = {
-      enable = true,
-      enable_autocmd = false,
-    },
   }
+
+  require("ts_context_commentstring").setup {}
+  vim.g.skip_ts_context_commentstring_module = true
 end
 
 return M

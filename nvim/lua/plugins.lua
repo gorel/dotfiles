@@ -640,10 +640,12 @@ function M.setup()
       end,
     }
 
-    -- For discord lulz
+    -- Find symbols
     use {
-      "andweeb/presence.nvim",
-      disable = true,
+      "simrat39/symbols-outline.nvim",
+      config = function()
+        require("symbols-outline").setup()
+      end,
     }
 
     -- AI code completion
