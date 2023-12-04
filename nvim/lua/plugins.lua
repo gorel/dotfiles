@@ -648,6 +648,9 @@ function M.setup()
       end,
     }
 
+    -- Find and replace
+    use { "nvim-pack/nvim-spectre" }
+
     -- AI code completion
     use {
       'Exafunction/codeium.vim',
