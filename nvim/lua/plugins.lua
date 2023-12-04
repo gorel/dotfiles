@@ -651,6 +651,9 @@ function M.setup()
     -- Find and replace
     use { "nvim-pack/nvim-spectre" }
 
+    -- Nim
+    use { "alaviss/nim.nvim" }
+
     -- AI code completion
     use {
       'Exafunction/codeium.vim',
