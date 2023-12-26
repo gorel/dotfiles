@@ -18,5 +18,14 @@ vim.keymap.set("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 vim.keymap.set("x", "J", ":m '>+1<CR>gv=gv", { desc = "Shift visual selection down" })
 vim.keymap.set("x", "K", ":m '<-2<CR>gv=gv", { desc = "Shift visual selection up" })
 
+-- Better scrolling
+local has_neoscroll, neoscroll = pcall(require, "neoscroll.config")
+if has_neoscroll then
+  neoscroll.set_mappings({
+    ["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } },
+    ["<C-j>"] = { "scroll", { "vim.wo.scroll", "true", "250" } },
+  })
+end
+
 -- FileTodo
 vim.keymap.set({ "n", "v" }, "<leader>t", ":FileTodo<CR>", { noremap = true, silent = true })
