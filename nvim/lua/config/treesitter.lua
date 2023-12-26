@@ -108,8 +108,11 @@ function M.setup()
     },
   }
 
-  require("ts_context_commentstring").setup {}
-  vim.g.skip_ts_context_commentstring_module = true
+  local has_commentstring, commentstring = pcall(require, "ts_context_commentstring")
+  if has_commentstring then
+    commentstring.setup {}
+    vim.g.skip_ts_context_commentstring_module = true
+  end
 end
 
 return M

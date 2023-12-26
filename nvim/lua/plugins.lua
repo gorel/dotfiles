@@ -137,6 +137,7 @@ function M.setup()
     -- IndentLine
     use {
       "lukas-reineke/indent-blankline.nvim",
+      commit = "db7cbcb",
       event = "BufReadPre",
       config = function()
         require("config.indentblankline").setup()
@@ -190,6 +191,7 @@ function M.setup()
     -- IDE
     use {
       "antoinemadec/FixCursorHold.nvim",
+      commit = "70a9516",
       event = "BufReadPre",
       config = function()
         vim.g.cursorhold_updatetime = 100
@@ -208,6 +210,7 @@ function M.setup()
     }
     use {
       "karb94/neoscroll.nvim",
+      commit = "e85740d",
       event = "BufReadPre",
       config = function()
         require("config.neoscroll").setup()
@@ -347,6 +350,7 @@ function M.setup()
     -- Buffer line
     use {
       "akinsho/nvim-bufferline.lua",
+      commit = "4ecfa81",
       event = "BufReadPre",
       wants = "nvim-web-devicons",
       config = function()
@@ -357,6 +361,7 @@ function M.setup()
     -- User interface
     use {
       "stevearc/dressing.nvim",
+      commit = "872cc4e",
       event = "BufReadPre",
       config = function()
         require("dressing").setup {
@@ -511,6 +516,7 @@ function M.setup()
         "neovim/nvim-lspconfig",
         opt = true,
         -- event = "VimEnter",
+        commit = "f938e3b",
         event = { "BufReadPre" },
         wants = {
           "nvim-lsp-installer",

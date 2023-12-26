@@ -22,14 +22,14 @@ function M.setup(servers, options)
       "debugpy",
       "isort",
       "flake8",
+      "lua-language-server",
       "prettierd",
       "pyre",
-      "rustfmt",
       "shellcheck",
       "shfmt",
       "stylua",
     },
-    auto_update = false,
+    auto_update = true,
     run_on_start = true,
   }
 

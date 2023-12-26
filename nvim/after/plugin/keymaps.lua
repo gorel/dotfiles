@@ -35,12 +35,15 @@ keymap("n", "<Up>", ":resize -1<CR>", default_opts)
 keymap("n", "<Down>", ":resize +1<CR>", default_opts)
 
 -- Dial (increment/decrement)
-keymap("n", "<C-a>", require("dial.map").inc_normal(), default_opts)
-keymap("n", "<C-x>", require("dial.map").dec_normal(), default_opts)
-keymap("v", "<C-a>", require("dial.map").inc_visual(), default_opts)
-keymap("v", "<C-x>", require("dial.map").dec_visual(), default_opts)
-keymap("v", "g<C-a>", require("dial.map").inc_gvisual(), default_opts)
-keymap("v", "g<C-x>", require("dial.map").dec_gvisual(), default_opts)
+local hasdial, dial = pcall(require, "dial.map")
+if hasdial then
+  keymap("n", "<C-a>", dial.inc_normal(), default_opts)
+  keymap("n", "<C-x>", dial.dec_normal(), default_opts)
+  keymap("v", "<C-a>", dial.inc_visual(), default_opts)
+  keymap("v", "<C-x>", dial.dec_visual(), default_opts)
+  keymap("v", "g<C-a>", dial.inc_gvisual(), default_opts)
+  keymap("v", "g<C-x>", dial.dec_gvisual(), default_opts)
+end
 
 -- Navigate buffers with tab/shift-tab
 keymap("n", "<TAB>", ":bnext<CR>", default_opts)

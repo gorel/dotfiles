@@ -20,6 +20,7 @@
   chk = commit -a -n -m 'CHECKPOINT'
   rbfiles = diff --name-only --diff-filter=U --relative
   count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
+  fix-main = "! git checkout main && git reset --hard origin/main"
 
 [credential]
   helper = store
