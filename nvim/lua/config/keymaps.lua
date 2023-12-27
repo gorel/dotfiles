@@ -10,7 +10,9 @@ vim.keymap.del("n", "<leader>w|")
 
 -- Buffer management
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save buffer" })
-vim.keymap.set("n", "<leader>q", "<cmd>bdel<cr>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>q", function()
+  require("config.utils").close_buffer()
+end, { desc = "Close buffer" })
 vim.keymap.set("n", "<S-Tab>", "<cmd>bprevious<cr>", { desc = "Prev buffer" })
 vim.keymap.set("n", "<Tab>", "<cmd>bnext<cr>", { desc = "Next buffer" })
 
@@ -28,4 +30,4 @@ if has_neoscroll then
 end
 
 -- FileTodo
-vim.keymap.set({ "n", "v" }, "<leader>t", ":FileTodo<CR>", { noremap = true, silent = true })
+vim.keymap.set({ "n", "v" }, "<leader>ct", ":FileTodo<CR>", { desc = "File Linear ticket" })

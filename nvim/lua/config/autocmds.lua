@@ -25,23 +25,31 @@ vim.cmd([[
   command! -range -nargs=? FileTodo call FileTodo(<line1>, <line2>, <f-args>)
 ]])
 
--- Close vim if the last buffer is deleted
-vim.cmd([[
-function! CountListedBuffers()
-     let cnt = 0
-     for nr in range(1,bufnr("$"))
-if buflisted(nr) && ! empty(bufname(nr)) || getbufvar(nr, '&buftype') ==# 'help'
-             let cnt += 1
-         endif
-     endfor
-     return cnt
-endfunction
-
-function! QuitIfLastBuffer()
-     if CountListedBuffers() == 1
-         :q
-     endif
- endfunction
-
-autocmd BufDelete * :call QuitIfLastBuffer()
-]])
+-- close some (more) filetypes with <q>
+local function augroup(name)
+  return vim.api.nvim_create_augroup("lazyvim_" .. name, { clear = true })
+end
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("close_with_q"),
+  pattern = {
+    "PlenaryTestPopup",
+    "help",
+    "lspinfo",
+    "man",
+    "notify",
+    "qf",
+    "query",
+    "spectre_panel",
+    "startuptime",
+    "tsplayground",
+    "neotest-output",
+    "checkhealth",
+    "neotest-summary",
+    "neotest-output-panel",
+    "?",
+  },
+  callback = function(event)
+    vim.bo[event.buf].buflisted = false
+    vim.keymap.set("n", "q", "<cmd>close<cr>", { buffer = event.buf, silent = true })
+  end,
+})
