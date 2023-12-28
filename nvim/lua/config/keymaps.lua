@@ -9,7 +9,7 @@ vim.keymap.del("n", "<leader>w-")
 vim.keymap.del("n", "<leader>w|")
 
 -- Buffer management
-vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save buffer" })
+vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save buffer", remap = true, silent = true })
 vim.keymap.set("n", "<leader>q", function()
   require("config.utils").close_buffer()
 end, { desc = "Close buffer" })
@@ -27,6 +27,35 @@ if has_neoscroll then
     ["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } },
     ["<C-j>"] = { "scroll", { "vim.wo.scroll", "true", "250" } },
   })
+end
+
+-- Dial (increment / decrement)
+local has_dialmap, dialmap = pcall(require, "dial.map")
+if has_dialmap then
+  vim.keymap.set("n", "<C-a>", function()
+    dialmap.manipulate("increment", "normal")
+  end)
+  vim.keymap.set("n", "<C-x>", function()
+    dialmap.manipulate("decrement", "normal")
+  end)
+  vim.keymap.set("n", "g<C-a>", function()
+    dialmap.manipulate("increment", "gnormal")
+  end)
+  vim.keymap.set("n", "g<C-x>", function()
+    dialmap.manipulate("decrement", "gnormal")
+  end)
+  vim.keymap.set("v", "<C-a>", function()
+    dialmap.manipulate("increment", "visual")
+  end)
+  vim.keymap.set("v", "<C-x>", function()
+    dialmap.manipulate("decrement", "visual")
+  end)
+  vim.keymap.set("v", "g<C-a>", function()
+    dialmap.manipulate("increment", "gvisual")
+  end)
+  vim.keymap.set("v", "g<C-x>", function()
+    dialmap.manipulate("decrement", "gvisual")
+  end)
 end
 
 -- FileTodo
