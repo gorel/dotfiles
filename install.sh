@@ -111,7 +111,4 @@ fi
 echo "Link bin/ to $HOME/dotbin/"
 ln -nsf "$PWD/bin" "$HOME/dotbin"
 
-echo "Run PackerSync"
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
 echo "All done! You should run 'source ~/.zshrc' now to get the new changes."
