@@ -7,6 +7,10 @@ vim.keymap.del("n", "<leader>ww")
 vim.keymap.del("n", "<leader>wd")
 vim.keymap.del("n", "<leader>w-")
 vim.keymap.del("n", "<leader>w|")
+vim.keymap.del("n", "<leader>L")
+
+-- Force LSP restart
+vim.keymap.set("n", "<leader>L", "<cmd>LspRestart<cr>", { desc = "Restart LSP" })
 
 -- Buffer and tab management
 vim.keymap.set("n", "<leader>w", "<cmd>w<cr>", { desc = "Save buffer", remap = true, silent = true })
