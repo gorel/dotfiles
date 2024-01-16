@@ -84,6 +84,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/dotbin/:$PATH"
 export PATH="$HOME/.nimble/bin:$PATH"
+export PATH="$HOME/.asdf/shims:$PATH"
 source "$HOME/.cargo/env"
 
 ##################################
@@ -95,21 +96,6 @@ export PYTHONDONTWRITEBYTECODE=1
 #############
 # Functions #
 #############
-function venv() {
-  local venv_dir="${1:-.venv}"
-  python3 -m venv $venv_dir
-  $venv_dir/bin/pip install --upgrade pip
-  $venv_dir/bin/pip install -r "$HOME/.config/global_requirements.txt"
-  if [[ -f "requirements.txt" ]]; then
-    $venv_dir/bin/pip install -r requirements.txt
-  fi
-}
-
-function activate() { 
-  local venv_dir="${1:-.venv}"
-  source $venv_dir/bin/activate
-}
-
 function rename-wezterm-title {
   echo "\x1b]1337;SetUserVar=panetitle=$(echo -n $1 | base64)\x07"
 }
