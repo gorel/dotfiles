@@ -86,4 +86,12 @@ disabled = false
 
 [username]
 style_user = "bold dimmed blue"
-show_always = false
+
+[kubernetes]
+disabled = false
+[kubernetes.context_aliases]
+'(.*)@(.*)\.(.*).eksctl.io' = '$2'
+'arn:aws:eks:(.*):059831130875:cluster/(.*)' = '[tools] $2'
+'arn:aws:eks:(.*):898101835304:cluster/(.*)' = '[staging] $2'
+'arn:aws:eks:(.*):525129503027:cluster/(.*)' = '[dev] $2'
+'arn:aws:eks:(.*):928657068455:cluster/(.*)' = '[prod] $2'

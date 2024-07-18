@@ -3,10 +3,10 @@
 -- Add any additional keymaps here
 
 -- Disable defaults that I don't like
-vim.keymap.del("n", "<leader>ww")
-vim.keymap.del("n", "<leader>wd")
-vim.keymap.del("n", "<leader>w-")
-vim.keymap.del("n", "<leader>w|")
+--vim.keymap.del("n", "<leader>ww")
+--vim.keymap.del("n", "<leader>wd")
+--vim.keymap.del("n", "<leader>w-")
+--vim.keymap.del("n", "<leader>w|")
 vim.keymap.del("n", "<leader>L")
 
 -- Force LSP restart

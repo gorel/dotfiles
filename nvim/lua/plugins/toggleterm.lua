@@ -1,5 +1,5 @@
 return {
-  { "folke/which-key.nvim", opts = { defaults = { ["<leader>\\"] = { name = "+terminal" } } } },
+  { "folke/which-key.nvim", opts = { spec = { ["<leader>\\"] = { name = "+terminal" } } } },
   {
     "akinsho/toggleterm.nvim",
     version = "*",

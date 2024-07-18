@@ -1,5 +1,5 @@
 return {
-  { "folke/which-key.nvim", opts = { defaults = { ["<leader>o"] = { name = "+other" } } } },
+  { "folke/which-key.nvim", opts = { spec = { ["<leader>o"] = { name = "+other" } } } },
   {
     "rgroli/other.nvim",
     opts = {

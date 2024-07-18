@@ -1,5 +1,5 @@
 return {
-  { "folke/which-key.nvim", opts = { defaults = { ["<leader>r"] = { name = "+refactor" } } } },
+  { "folke/which-key.nvim", opts = { spec = { ["<leader>r"] = { name = "+refactor" } } } },
   {
     "ThePrimeagen/refactoring.nvim",
     dependencies = {
