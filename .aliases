@@ -62,3 +62,7 @@ fi
 if [ -f "$HOME/.stytch-aliases" ]; then
 	source "$HOME/.stytch-aliases"
 fi
+
+if [ -f "$HOME/.secure-aliases" ]; then
+	source "$HOME/.secure-aliases"
+fi
