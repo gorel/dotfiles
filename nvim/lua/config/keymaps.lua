@@ -25,13 +25,16 @@ vim.keymap.set("n", "<leader><Tab>n", "<cmd>tabnext<cr>", { desc = "Next tab" })
 vim.keymap.set("x", "J", ":m '>+1<CR>gv=gv", { desc = "Shift visual selection down" })
 vim.keymap.set("x", "K", ":m '<-2<CR>gv=gv", { desc = "Shift visual selection up" })
 
--- Better scrolling
-local has_neoscroll, neoscroll = pcall(require, "neoscroll.config")
+local has_neoscroll, neoscroll = pcall(require, "neoscroll")
 if has_neoscroll then
-  neoscroll.set_mappings({
-    ["<C-k>"] = { "scroll", { "-vim.wo.scroll", "true", "250" } },
-    ["<C-j>"] = { "scroll", { "vim.wo.scroll", "true", "250" } },
-  })
+  local keymap = {
+    ["<C-j>"] = function() neoscroll.ctrl_d({duration = 250}) end,
+    ["<C-k>"] = function() neoscroll.ctrl_u({duration = 250}) end,
+  }
+  local modes = {"n", "v", "x"}
+  for key, func in pairs(keymap) do
+    vim.keymap.set(modes, key, func, {desc = "Scroll " .. key})
+  end
 end
 
 -- Dial (increment / decrement)
