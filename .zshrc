@@ -135,6 +135,13 @@ export NVM_DIR="$HOME/.nvm"
 ##########
 eval "$(direnv hook zsh)"
 
+##########
+# devctl #
+##########
+if [ -f /Users/gorel/.devctl-completion.zsh ]; then
+  source /Users/gorel/.devctl-completion.zsh
+fi
+
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export AWS_VAULT_PROMPT=ykman
