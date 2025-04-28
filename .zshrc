@@ -38,6 +38,9 @@ source "$HOME/.env_vars"
 if [ -f "$HOME/.aliases" ]; then
     source "$HOME/.aliases"
 fi
+if [ -f "$HOME/.secrets" ]; then
+    source "$HOME/.secrets"
+fi
 
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
