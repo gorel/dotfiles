@@ -1,6 +1,7 @@
 return {
   "karb94/neoscroll.nvim",
-  config = function()
-    require("neoscroll").setup({})
-  end,
+  opts = {
+    easing_function = "linear",
+    mappings = { "<C-u>", "<C-d>", "<C-j>", "<C-k>", "zz", "zt", "zb" }, -- omit 'n' and 'N'
+  },
 }
