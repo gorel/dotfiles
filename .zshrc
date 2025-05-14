@@ -41,6 +41,9 @@ fi
 if [ -f "$HOME/.secrets" ]; then
     source "$HOME/.secrets"
 fi
+if [ -f "$HOME/.secure-aliases" ]; then
+    source "$HOME/.secure-aliases"
+fi
 
 # load zgen
 source "${HOME}/.zgen/zgen.zsh"
