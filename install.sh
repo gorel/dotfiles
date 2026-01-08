@@ -79,6 +79,7 @@ if ! command -v delta &>/dev/null; then
 fi
 
 if ! git stack --help >/dev/null 2>&1; then
+	echo "Installing git stack"
 	cargo install git-stack
 	cargo install git-branch-stash-cli
 fi
