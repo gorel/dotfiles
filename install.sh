@@ -78,6 +78,11 @@ if ! command -v delta &>/dev/null; then
 	cargo install git-delta
 fi
 
+if ! git stack --help >/dev/null 2>&1; then
+	cargo install git-stack
+	cargo install git-branch-stash-cli
+fi
+
 cd "$(dirname "$0")" || exit 1
 files=(
 	".aliases"
@@ -88,6 +93,7 @@ files=(
 	".tmux.conf"
 	".vimrc"
 	".zshrc"
+	".cmp.zsh"
 )
 for f in "${files[@]}"; do
 	ln -nsf "$PWD/$f" "$HOME/$f"

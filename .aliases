@@ -16,6 +16,7 @@ alias fgrep='fgrep --color=auto'
 alias fuck='eval "sudo $(fc -ln -1)"'
 alias g="git"
 alias grep='grep --color=auto'
+alias gt="gotestsum"
 alias h="hg"
 alias hc="hg ci -m"
 alias hist="history"

@@ -6,6 +6,7 @@
   a = add
   b = branch -vv
   ba = branch -a
+  bd = branch -d
   ci = commit
   co = checkout
   d = diff
@@ -21,6 +22,12 @@
   rbfiles = diff --name-only --diff-filter=U --relative
   count-lines = "! git log --author=\"$1\" --pretty=tformat: --numstat | awk '{ add += $1; subs += $2; loc += $1 - $2 } END { printf \"added lines: %s, removed lines: %s, total lines: %s\\n\", add, subs, loc }' #"
   fix-main = "! git checkout main && git reset --hard origin/main"
+  next = stack next
+  prev = stack previous
+  reword = stack reword
+  amend = stack amend
+  sync = stack sync
+  run = stack run
 
 [credential]
   helper = store
@@ -84,6 +91,9 @@
 
 [include]
   path = ~/.config/git-profiles/stytch
+
+[includeIf "gitdir:~/github/twilio/"]
+  path = ~/.config/git-profiles/twilio
 
 [includeIf "gitdir:~/github/personal/"]
   path = ~/.config/git-profiles/personal

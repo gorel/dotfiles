@@ -144,10 +144,21 @@ eval "$(direnv hook zsh)"
 ##########
 # devctl #
 ##########
-if [ -f /Users/gorel/.devctl-completion.zsh ]; then
-  source /Users/gorel/.devctl-completion.zsh
+if [ -f "$HOME/.devctl-completion.zsh" ]; then
+  source "$HOME/.devctl-completion.zsh"
 fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
 export AWS_VAULT_PROMPT=ykman
+
+# Prioritize homebrew's version of Ruby
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+# Laptop setup script
+export PATH="/tmp/engineering-laptop-setup/bin:$PATH"
+function updateclaude() {
+  laptop.update && laptop.upgrade --tags claude
+}
+
+source "$HOME/.cmp.zsh"
