@@ -24,6 +24,7 @@ return {
             },
           },
         },
+        gh_actions_ls = {},
       },
     },
   },
