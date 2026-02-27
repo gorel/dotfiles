@@ -5,6 +5,3 @@
 [credential]
   helper = store
   username = gorel
-
-[url "https://gorel@github.com/siterisk"]
-  insteadOf = https://github.com/siterisk

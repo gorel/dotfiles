@@ -5,6 +5,3 @@
 [credential]
   helper = store
   username = logan-stytch
-
-[url "https://logan-stytch@github.com/stytchauth"]
-  insteadOf = https://github.com/stytchauth

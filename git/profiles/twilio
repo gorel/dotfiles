@@ -5,6 +5,3 @@
 [credential]
   helper = store
   username = logan-twilio
-
-[url "https://logan-twilio@github.com/twilio-internal"]
-  insteadOf = https://github.com/twilio-internal

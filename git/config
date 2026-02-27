@@ -100,3 +100,14 @@
 
 [sequence]
 	editor = /Users/gorel/.restack/edit.sh
+
+# URL rewrites - these have to be in the base .gitconfig
+# since Go runs from the gomod cache directory when fetching modules.
+[url "https://logan-twilio@github.com/twilio-internal"]
+  insteadOf = https://github.com/twilio-internal
+
+[url "https://logan-stytch@github.com/stytchauth"]
+  insteadOf = https://github.com/stytchauth
+
+[url "https://gorel@github.com/siterisk"]
+  insteadOf = https://github.com/siterisk
