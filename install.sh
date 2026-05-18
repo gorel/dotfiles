@@ -42,12 +42,8 @@ if ! command -v starship &>/dev/null; then
 fi
 
 if ! command -v j &>/dev/null; then
-	echo "Installing autojump"
-	if ! $MAC; then
-		sudo apt-get install -y autojump
-	else
-		brew install autojump
-	fi
+	echo "Installing zoxide"
+	curl -sSfL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
 fi
 
 if ! command -v mcfly &>/dev/null; then

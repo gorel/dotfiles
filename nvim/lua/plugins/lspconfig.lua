@@ -11,7 +11,9 @@ return {
             gopls = {
               analyses = {
                 fieldalignment = false,
+                ST1000 = false,
               },
+              goimportsLocalPrefixes = "github.com/twilio-internal,stytch-domain,ciam",
             },
           },
         },

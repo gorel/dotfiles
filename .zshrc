@@ -58,7 +58,6 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/vi-mode
   zgen oh-my-zsh plugins/extract
   zgen oh-my-zsh plugins/colored-man-pages
-  zgen oh-my-zsh plugins/autojump # note: install autojump first
 
   zgen load zsh-users/zsh-autosuggestions
   zgen load zsh-users/zsh-syntax-highlighting
@@ -67,6 +66,14 @@ if ! zgen saved; then
 
   # generate the init script from plugins above
   zgen save
+fi
+
+
+##########
+# zoxide #
+##########
+if command -v zoxide &> /dev/null; then
+  eval "$(zoxide init zsh --cmd j)"
 fi
 
 ##############
